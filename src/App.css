@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  font-family: 'Poppins';
 }
 body {
   font-family: Arial, sans-serif;
@@ -126,4 +127,133 @@ nav ul li a {
   font-size: 14px;
   margin-top: 20px;
   color: #888;
+}
+
+/* *contenido */
+
+.banner {
+  display: flex;
+  background-image: url(../src/assets/img/scandinavian-interior-mockup-wall-decal-background\ 1.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  justify-content: flex-end;
+  align-items: center;
+
+  .info-banner{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF3E3;
+    width: 40%;
+    height: 350px;
+    border-radius: 10px;
+    padding: 30px;
+    justify-content: center;
+
+    .title-banner{
+      color: #B88E2F;
+    }
+  }
+}
+
+.banner-page{
+  background-image: url(/src/assets/img/banner-rect.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 30vh;
+
+  div div{
+    gap: 5px;
+  }
+  
+  div div a {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+/* *login and register */
+
+.login-register{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3rem;
+  gap: 20px;
+
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight:500;
+  }
+  
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    margin-top: 1rem;
+    padding: 8px;
+    width: 350px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 50%;
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  
+}
+
+/* *banner call to action */
+
+.banner-call{
+  background-color: #FAF4F4;
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  
+  div{
+    text-align: start;
+    width: 20%;
+  }
 }
