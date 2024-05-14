@@ -256,4 +256,8 @@ nav ul li a {
     text-align: start;
     width: 20%;
   }
+
+  h3{
+    font-weight: bold;
+  }
 }
