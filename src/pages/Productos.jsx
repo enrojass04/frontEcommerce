@@ -3,19 +3,24 @@ import React from "react";
 import imagenes from "../assets/imagenes";
 import { Link } from "react-router-dom";
 import "../App.css";
+import ProductList from "../components/ProductList";
 
 export const Productos = () => {
   return (
     <div>
-      <section class="banner-page d-flex align-items-center justify-content-center">
+      <section className="banner-page d-flex align-items-center justify-content-center">
         <div>
           <img src={imagenes.logo} alt="logo ecoommerce" />
           <h1>Productos</h1>
-          <div class="d-flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <Link to="/">Home </Link> / <p> Productos</p>
           </div>
+
         </div>
       </section>
+      <div className="d-flex justify-content-center">
+        <ProductList />
+      </div>
     </div>
   );
 };

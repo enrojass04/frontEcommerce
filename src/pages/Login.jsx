@@ -68,7 +68,7 @@ function RegisterForm() {
 
 function CallToAction() {
   return (
-    <div class="banner-call">
+    <div className="banner-call">
       <div>
         <h3>Domicilio gratis</h3>
         <p>For all oders over $50, consectetur adipim scing elit.</p>

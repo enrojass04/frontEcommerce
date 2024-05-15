@@ -3,13 +3,13 @@ import "../App.css";
 
 export const Home = () => {
   return (
-    <section class="banner">
-      <div class="info-banner">
-        <p class="fw-bold text-start">Llega lo nuevo</p>
-        <h1 class="title-banner fw-bold text-start">
+    <section className="banner">
+      <div className="info-banner">
+        <p className="fw-bold text-start">Llega lo nuevo</p>
+        <h1 className="title-banner fw-bold text-start">
           Descubre nuestra<br></br>nueva colección
         </h1>
-        <p class="text-start">
+        <p className="text-start">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
           tellus, luctus nec ullamcorper mattis.
         </p>

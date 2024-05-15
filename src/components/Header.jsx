@@ -9,7 +9,7 @@ import "../App.css";
 export const Header = () => {
   return (
     <header>
-      <div class="logo-header">
+      <div className="logo-header">
         <img src={imagenes.logo} alt="logo-ecommerce" />
         <h1>Ecommerce</h1>
       </div>
