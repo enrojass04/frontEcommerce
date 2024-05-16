@@ -14,7 +14,7 @@ const CardProduct = ({ product }) => {
             </div> */}
 
             <div className="card">
-                <img src='../public/img/acc.jpg' className="card-img-top img-thumbnail" alt="..."/>
+                {/* <img src='../public/img/acc.jpg' className="card-img-top img-thumbnail" alt="..."/> */}
                     <div className="card-body">
                         <h4 className="card-title">{product.name_product}</h4>
                         <p className="card-text">{product.description}</p>

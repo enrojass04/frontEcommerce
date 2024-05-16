@@ -5,9 +5,9 @@ import { Layout } from "./components/Layout";
 import About from "./pages/About";
 import { Home } from "./pages/Home";
 import { Contact } from "./pages/Contact";
-import { Login } from "./pages/Login";
+import { MyAccount } from "./pages/MyAccount";
 import { Carrito } from "./pages/Carrito";
-import { Productos } from "./pages/Productos";
+import { Products } from "./pages/Products";
 
 function App() {
   return (
@@ -18,9 +18,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="login" element={<Login />} />
+            <Route path="login" element={<MyAccount />} />
             <Route path="carrito" element={<Carrito />} />
-            <Route path="products" element={<Productos />} />
+            <Route path="products" element={<Products />} />
           </Route>
         </Routes>
       </BrowserRouter>

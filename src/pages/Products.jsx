@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import ProductList from "../components/ProductList";
 
-export const Productos = () => {
+export const Products = () => {
   return (
     <div>
       <section className="banner-page d-flex align-items-center justify-content-center">
