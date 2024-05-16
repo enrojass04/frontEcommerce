@@ -1,6 +1,6 @@
-const API_URL = `${import.meta.env.VITE_API_URL}/users`;
+const API_URL = `${import.meta.env.VITE_API_URL}/categories`;
 
-export const getUsersService = async() => {
+export const getCategoriesService = async() => {
     const response = await fetch(API_URL + "/");
     if (!response.ok) {
         throw new Error('Error de conexión');
@@ -8,4 +8,3 @@ export const getUsersService = async() => {
     const data = await response.json();
     return data;
 }
-

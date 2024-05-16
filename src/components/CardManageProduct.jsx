@@ -9,7 +9,7 @@ export const CardManageProduct = ({ product }) => {
                     <p className="col card-text mx-1">{product.name_product}</p>
                     <p className="col card-text mx-1">{product.price_product}</p>
                     <p className="col card-text mx-1">{product.quantity_product}</p>
-                    <p className="col card-text mx-1">{product.isActive}</p>
+                    <p className="col card-text mx-1">{product.isActive ? 'Activo' : 'Inactivo'}</p>
                 </div>
             </div>
             <div className='col-2 d-flex align-items-center'>
