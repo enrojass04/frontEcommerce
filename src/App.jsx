@@ -8,6 +8,7 @@ import { Contact } from "./pages/Contact";
 import { MyAccount } from "./pages/MyAccount";
 import { Carrito } from "./pages/Carrito";
 import { Products } from "./pages/Products";
+import Manage from "./pages/Manage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="login" element={<MyAccount />} />
             <Route path="carrito" element={<Carrito />} />
             <Route path="products" element={<Products />} />
+            <Route path="manage" element={<Manage />} />
           </Route>
         </Routes>
       </BrowserRouter>
