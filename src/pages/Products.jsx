@@ -13,7 +13,8 @@ export const Products = () => {
           <img src={imagenes.logo} alt="logo ecoommerce" />
           <h1>Productos</h1>
           <div className="d-flex justify-content-center">
-            <Link to="/">Home </Link> / <p> Productos</p>
+            <Link to="/">Home </Link> / 
+            <p> Productos</p>
           </div>
 
         </div>

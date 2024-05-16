@@ -1,14 +1,11 @@
 #root {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
+  max-width: 90%;
+
   text-align: center;
   font-family: 'Poppins';
 }
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+
 }
 /* *header */
 header {
@@ -260,4 +257,10 @@ nav ul li a {
   h3{
     font-weight: bold;
   }
+}
+
+
+.card-product {
+  border: 1px solid black;
+  border-radius: 8px;
 }

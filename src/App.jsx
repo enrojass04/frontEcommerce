@@ -9,6 +9,9 @@ import { MyAccount } from "./pages/MyAccount";
 import { Carrito } from "./pages/Carrito";
 import { Products } from "./pages/Products";
 import Manage from "./pages/Manage";
+import ListManageProduct from "./components/ListManageProduct";
+import ListManageUser from "./components/ListManageUser";
+import ListManageCategory from "./components/ListManageCategory";
 
 function App() {
   return (
@@ -22,7 +25,11 @@ function App() {
             <Route path="login" element={<MyAccount />} />
             <Route path="carrito" element={<Carrito />} />
             <Route path="products" element={<Products />} />
-            <Route path="manage" element={<Manage />} />
+            <Route path="manage" element={<Manage />}>
+              <Route path="product" element={<ListManageProduct />} />
+              <Route path="user" element={<ListManageUser />} />
+              <Route path="category" element={<ListManageCategory />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

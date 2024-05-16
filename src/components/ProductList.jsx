@@ -25,14 +25,8 @@ const ProductList = () => {
                         </div>
                     ))}
                 </div>
-                {/* {products?.map(product => (
-                    <CardProduct key={product.id} product={product} />
-                ))} */}
             </div>
-
         </div>
-
-
     )
 }
 
