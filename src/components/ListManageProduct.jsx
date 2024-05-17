@@ -4,19 +4,33 @@ import * as productService from "../services/ProductService";
 
 const ListManageProduct = () => {
   const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(0);
-  const [totalPage, setTotalPage] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1); // Inicializar en la primera página
 
   const getProducts = async (page) => {
-    const data = await productService.getAProductsPages(1);
+    const data = await productService.getAProductsPages(page);
     setProducts(data.products);
-    setTotalPage(data.totalPages);
+    setTotalPages(data.totalPages);
+    setCurrentPage(data.currentPage);
   };
 
   useEffect(() => {
-    getProducts();
-  }, []);
+    getProducts(currentPage);
+  }, [currentPage]);
+
+  const handlePrevious = (e) => {
+    e.preventDefault();
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   return (
     <div>
@@ -28,18 +42,32 @@ const ListManageProduct = () => {
         ))}
       </div>
 
-      <nav aria-label="...">
+      <nav aria-label="Page navigation">
         <ul className="pagination">
-          <li className="page-item disabled">
-            <a className="page-link">Previous</a>
+          <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+            <a className="page-link" href="#" onClick={handlePrevious}>
+              Previous
+            </a>
           </li>
-          {Array.from({ length: totalPage }, (_, index) => (
-            <li className="mx-3" key={index + 1}>
-              {index + 1}
+          {Array.from({ length: totalPages }, (_, index) => (
+            <li
+              className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+              key={index + 1}
+            >
+              <a
+                className="page-link"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentPage(index + 1);
+                }}
+              >
+                {index + 1}
+              </a>
             </li>
           ))}
-          <li className="page-item">
-            <a className="page-link" href="#">
+          <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+            <a className="page-link" href="#" onClick={handleNext}>
               Next
             </a>
           </li>
