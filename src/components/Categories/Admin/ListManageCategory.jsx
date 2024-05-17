@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CardManageCategory } from "./CardManageCategory";
-import * as categoryService from "../services/CategoryService";
+import * as categoryService from "../../../services/CategoryService";
+import ButtonAdd from "../../ButtonAdd";
 
 const ListManageCategory = () => {
 
@@ -17,6 +18,7 @@ const ListManageCategory = () => {
 
 return (
   <div>
+    <ButtonAdd/>
     <div className="d-flex flex-column mt-3">
       {categories?.map((category) => (
         <div key={category.id} className="mb-4">

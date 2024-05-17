@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CardManageUser } from "./CardManageUser";
-import * as userService from "../services/UserService";
+import * as userService from "../../../services/UserService";
+import ButtonAdd from "../../ButtonAdd";
 
 const ListManageUser = () => {
 
@@ -17,6 +18,8 @@ const ListManageUser = () => {
 
 return (
   <div>
+    <ButtonAdd/>
+
     <div className="d-flex flex-column mt-3">
       {users?.map((user) => (
         <div key={user.id} className="mb-4">

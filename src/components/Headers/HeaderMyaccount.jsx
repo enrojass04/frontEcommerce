@@ -1,5 +1,5 @@
 import React from 'react'
-import imagenes from "../assets/imagenes";
+import imagenes from "../../assets/imagenes";
 import { Link } from 'react-router-dom';
 
 const HeaderMyaccount = () => {

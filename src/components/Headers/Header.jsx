@@ -2,9 +2,9 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 //assets
-import imagenes from "../assets/imagenes";
-import iconos from "../assets/iconos";
-import "../App.css";
+import imagenes from "../../assets/imagenes";
+import iconos from "../../assets/iconos";
+import "../../App.css";
 
 export const Header = () => {
   return (

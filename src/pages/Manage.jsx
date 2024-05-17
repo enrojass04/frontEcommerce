@@ -6,24 +6,25 @@ const Manage = () => {
     <div>
       <div className="row">
         <div className="col d-flex flex-column justify-content-center align-items-center">
-          <div>
-            <Link to="product">Product</Link>
+          <div className="my-2 border border-dark">
+            <Link to="user" className="text-dark text-decoration-none p-2">
+              User
+            </Link>
           </div>
-          <div>
-            <Link to="user">User</Link>
+          <div className="my-2 border border-dark">
+            <Link to="category" className="text-dark text-decoration-none p-2">
+              Category
+            </Link>
           </div>
-          <div>
-            <Link to="category">Category</Link>
+          <div className="my-2 border border-dark">
+            <Link to="product" className="text-dark text-decoration-none p-2">
+              Product
+            </Link>
           </div>
         </div>
         <div className="col-9">
-          <div className="d-flex justify-content-end">
-            <button className="btn btn-primary me-5 mb-3">Add User</button>
-          </div>
-          <div>
-            <div className="d-flex flex-column mt-3">
-              <Outlet />
-            </div>
+          <div className="d-flex flex-column mt-3">
+            <Outlet />
           </div>
         </div>
       </div>

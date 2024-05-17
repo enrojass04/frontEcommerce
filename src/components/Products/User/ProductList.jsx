@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import CardProduct from './CardProduct';
-import * as productService from '../services/ProductService';
+import CardProduct from '../User/CardProduct';
+import * as productService from '../../../services/ProductService';
 
 const ProductList = () => {
 

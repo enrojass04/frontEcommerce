@@ -3,19 +3,19 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import About from "./pages/About";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/User/Home";
 import { Contact } from "./pages/Contact";
 import { MyAccount } from "./pages/MyAccount";
 import { Carrito } from "./pages/Carrito";
 import { Products } from "./pages/Products";
 import Manage from "./pages/Manage";
-import ListManageProduct from "./components/ListManageProduct";
-import ListManageUser from "./components/ListManageUser";
-import ListManageCategory from "./components/ListManageCategory";
+import ListManageProduct from "./components/Products/Admin/ListManageProduct";
+import ListManageUser from "./components/Users/Admin/ListManageUser";
+import ListManageCategory from "./components/Categories/Admin/ListManageCategory";
 
 function App() {
   return (
-    <div>
+    <div className="container-fluid h-100">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>

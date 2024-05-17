@@ -3,7 +3,7 @@ import React from "react";
 import imagenes from "../assets/imagenes";
 import { Link } from "react-router-dom";
 import "../App.css";
-import ProductList from "../components/ProductList";
+import ProductList from "../components/Products/User/ProductList";
 
 export const Products = () => {
   return (

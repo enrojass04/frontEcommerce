@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CardManageProduct } from "./CardManageProduct";
-import * as productService from "../services/ProductService";
+import * as productService from "../../../services/ProductService";
+import ButtonAdd from "../../ButtonAdd";
 
 const ListManageProduct = () => {
   const [products, setProducts] = useState([]);
@@ -34,6 +35,8 @@ const ListManageProduct = () => {
 
   return (
     <div>
+      <ButtonAdd/>
+
       <div className="d-flex flex-column mt-3">
         {products?.map((product) => (
           <div key={product.id} className="mb-4">
@@ -51,7 +54,9 @@ const ListManageProduct = () => {
           </li>
           {Array.from({ length: totalPages }, (_, index) => (
             <li
-              className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+              className={`page-item ${
+                currentPage === index + 1 ? "active" : ""
+              }`}
               key={index + 1}
             >
               <a
@@ -66,7 +71,11 @@ const ListManageProduct = () => {
               </a>
             </li>
           ))}
-          <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+          <li
+            className={`page-item ${
+              currentPage === totalPages ? "disabled" : ""
+            }`}
+          >
             <a className="page-link" href="#" onClick={handleNext}>
               Next
             </a>
