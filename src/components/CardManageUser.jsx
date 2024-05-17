@@ -13,8 +13,8 @@ export const CardManageUser = ({ user }) => {
                 </div>
             </div>
             <div className='col-2 d-flex align-items-center'>
-                <a href="#" className="btn btn-primary">Delete</a>
-                <a href="#" className="btn btn-primary mx-1">Edit</a>
+                <a href="#" className="btn btn-warning mx-1">Edit</a>
+                <a href="#" className="btn btn-danger">Delete</a>
             </div>
         </div >
     )

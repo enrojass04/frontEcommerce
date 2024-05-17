@@ -3,17 +3,20 @@ import { CardManageProduct } from "./CardManageProduct";
 import * as productService from "../services/ProductService";
 
 const ListManageProduct = () => {
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
-    const [products, setProducts] = useState([]);
+  const getProducts = async (page) => {
+    const data = await productService.getAProductsPages(1);
+    setProducts(data.products);
+    setTotalPage(data.totalPages);
+  };
 
-    const getProducts = async () => {
-      const data = await productService.getProductsService();
-      setProducts(data.products);
-    };
-  
-    useEffect(() => {
-      getProducts();
-    }, []);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div>
@@ -24,6 +27,24 @@ const ListManageProduct = () => {
           </div>
         ))}
       </div>
+
+      <nav aria-label="...">
+        <ul className="pagination">
+          <li className="page-item disabled">
+            <a className="page-link">Previous</a>
+          </li>
+          {Array.from({ length: totalPage }, (_, index) => (
+            <li className="mx-3" key={index + 1}>
+              {index + 1}
+            </li>
+          ))}
+          <li className="page-item">
+            <a className="page-link" href="#">
+              Next
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };

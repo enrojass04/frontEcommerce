@@ -6,5 +6,6 @@ export const getCategoriesService = async() => {
         throw new Error('Error de conexión');
     }
     const data = await response.json();
+    console.log(data);
     return data;
 }

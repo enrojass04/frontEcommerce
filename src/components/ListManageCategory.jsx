@@ -18,9 +18,9 @@ const ListManageCategory = () => {
 return (
   <div>
     <div className="d-flex flex-column mt-3">
-      {categories?.map((user) => (
-        <div key={user.id} className="mb-4">
-          <CardManageCategory key={user.id} user={user} />
+      {categories?.map((category) => (
+        <div key={category.id} className="mb-4">
+          <CardManageCategory key={category.id} category={category} />
         </div>
       ))}
     </div>
