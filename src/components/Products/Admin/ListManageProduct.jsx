@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { CardManageProduct } from "./CardManageProduct";
 import * as productService from "../../../services/ProductService";
 import ButtonAdd from "../../ButtonAdd";
-import ModalProduct from "./ModalProduct";
+import ModalSave from "./ModalSave";
 import ModalDelete from "./ModalDelete";
 import ModalUpdate from "./ModalUpdate";
 
 
 const ListManageProduct = () => {
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showSave, setShowSave] = useState(false);
+  const handleCloseSave = () => setShowSave(false);
+  const handleShowSave = () => setShowSave(true);
 
   const [showDelete, setShowDelete] = useState(false);
   const handleCloseDelete = () => setShowDelete(false);
@@ -23,7 +23,7 @@ const ListManageProduct = () => {
 
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1); // Inicializar en la primera página
+  const [currentPage, setCurrentPage] = useState(1); 
 
   const getProducts = async (page) => {
     const data = await productService.getAProductsPages(page);
@@ -50,12 +50,17 @@ const ListManageProduct = () => {
     }
   };
 
+  const handleSaveNewProduct = () => {
+    getProducts(currentPage);
+  };
+
   return (
     <div>
-      <ButtonAdd onClick={handleShow}/>
-      <ModalProduct show={show} handleClose={handleClose}/>
+      <ButtonAdd onClick={handleShowSave}/>
+      <ModalSave showSave={showSave} handleCloseSave={handleCloseSave} onSave={handleSaveNewProduct}/>
       <ModalDelete showDelete={showDelete} handleCloseDelete={handleCloseDelete}/>
       <ModalUpdate showUpdate={showUpdate} handleCloseUpdate={handleCloseUpdate}/>
+
       <div className="d-flex flex-column mt-3">
         {products?.map((product) => (
           <div key={product.id} className="mb-4">
