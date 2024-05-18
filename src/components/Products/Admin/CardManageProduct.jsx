@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CardManageProduct = ({ product }) => {
+export const CardManageProduct = ({ product, onEditClick, onDeleteClick}) => {
     return (
         <div className='row'>
             <div className="col-10 card-product ">
@@ -13,8 +13,8 @@ export const CardManageProduct = ({ product }) => {
                 </div>
             </div>
             <div className='col-2 d-flex align-items-center'>
-                <a href="#" className="btn btn-warning mx-1">Edit</a>
-                <a href="#" className="btn btn-danger">Delete</a>
+                <button className="btn btn-warning mx-1" onClick={onEditClick}>Edit</button>
+                <button className="btn btn-danger mx-1" onClick={onDeleteClick}>Delete</button>
             </div>
         </div >
     )

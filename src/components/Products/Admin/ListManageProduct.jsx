@@ -2,8 +2,25 @@ import React, { useEffect, useState } from "react";
 import { CardManageProduct } from "./CardManageProduct";
 import * as productService from "../../../services/ProductService";
 import ButtonAdd from "../../ButtonAdd";
+import ModalProduct from "./ModalProduct";
+import ModalDelete from "./ModalDelete";
+import ModalUpdate from "./ModalUpdate";
+
 
 const ListManageProduct = () => {
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [showDelete, setShowDelete] = useState(false);
+  const handleCloseDelete = () => setShowDelete(false);
+  const handleShowDelete = () => setShowDelete(true);
+
+  const [showUpdate, setShowUpdate] = useState(false);
+  const handleCloseUpdate = () => setShowUpdate(false);
+  const handleShowUpdate = () => setShowUpdate(true);
+
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); // Inicializar en la primera página
@@ -35,12 +52,14 @@ const ListManageProduct = () => {
 
   return (
     <div>
-      <ButtonAdd/>
-
+      <ButtonAdd onClick={handleShow}/>
+      <ModalProduct show={show} handleClose={handleClose}/>
+      <ModalDelete showDelete={showDelete} handleCloseDelete={handleCloseDelete}/>
+      <ModalUpdate showUpdate={showUpdate} handleCloseUpdate={handleCloseUpdate}/>
       <div className="d-flex flex-column mt-3">
         {products?.map((product) => (
           <div key={product.id} className="mb-4">
-            <CardManageProduct key={product.id} product={product} />
+            <CardManageProduct  onEditClick={handleShowUpdate} onDeleteClick={handleShowDelete} key={product.id} product={product} />
           </div>
         ))}
       </div>
