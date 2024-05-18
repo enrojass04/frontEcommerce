@@ -1,26 +1,19 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
+import NavBarAdmin from "../components/NavBar/NavBarAdmin";
+
+import imagenes from "../assets/imagenes";
 
 const Manage = () => {
   return (
-    <div>
+    <div className="w-100">
       <div className="row">
-        <div className="col d-flex flex-column justify-content-center align-items-center">
-          <div className="my-2 border border-dark">
-            <Link to="user" className="text-dark text-decoration-none p-2">
-              User
-            </Link>
+        <div className="col-3">
+          <div className="logo-header">
+            <img src={imagenes.logo} alt="logo-ecommerce" />
+            <h4>Ecommerce</h4>
           </div>
-          <div className="my-2 border border-dark">
-            <Link to="category" className="text-dark text-decoration-none p-2">
-              Category
-            </Link>
-          </div>
-          <div className="my-2 border border-dark">
-            <Link to="product" className="text-dark text-decoration-none p-2">
-              Product
-            </Link>
-          </div>
+          <NavBarAdmin />
         </div>
         <div className="col-9">
           <div className="d-flex flex-column mt-3">

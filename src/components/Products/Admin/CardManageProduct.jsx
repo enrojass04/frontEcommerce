@@ -2,25 +2,6 @@ import React, { useState } from "react";
 
 export const CardManageProduct = ({ product, onEditClick, onDeleteClick }) => {
 
-/*   const [editProduct, setEditProduct] = useState({ ...product });
-  const handleEditChange = (e) => {
-    const { name, value } = e.target;
-    setEditProduct({
-      ...editProduct,
-      [name]: value,
-    });
-  };
-
-  const handleSaveChanges = async () => {
-    try {
-      await productService.updateProductService(product.id, editProduct);
-      setShowEditModal(false);
-      // Add any additional logic you need after saving changes
-    } catch (error) {
-      console.error("Error updating product:", error);
-    }
-  }; */
-
   return (
     <div className="row">
       <div className="col-10 card-product ">

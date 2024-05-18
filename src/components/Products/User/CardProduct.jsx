@@ -5,7 +5,7 @@ const CardProduct = ({ product }) => {
     <div>
       <div className="card">
         <div className="card-body row ">
-          <h4 className="card-title col">{product.name_product}</h4>
+          <h5 className="card-title col">{product.name_product}</h5>
           <p className="card-text col">{product.description}</p>
           <p className="card-text col">{product.price_product}</p>
           <a href="#" className="btn btn-primary">

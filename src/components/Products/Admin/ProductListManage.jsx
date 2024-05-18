@@ -7,7 +7,7 @@ import ModalDelete from "./ModalDelete";
 import ModalUpdate from "./ModalUpdate";
 
 
-const ListManageProduct = () => {
+const ProductListManage = () => {
 
   const [showSave, setShowSave] = useState(false);
   const handleCloseSave = () => setShowSave(false);
@@ -110,4 +110,4 @@ const ListManageProduct = () => {
   );
 };
 
-export default ListManageProduct;
+export default ProductListManage;

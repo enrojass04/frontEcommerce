@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "../../App.css";
-import ModalTest from "../../components/ModalTest";
 
-export const Home = () => {
-
+export const HomeUser = () => {
 
   return (
     <>
