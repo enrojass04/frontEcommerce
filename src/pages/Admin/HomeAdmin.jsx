@@ -19,8 +19,8 @@ const HomeAdmin = () => {
             <img src={imagenes.logo} alt="logo-ecommerce" />
             <h1>Ecommerce</h1>
           </div>
-          <NavBarAdmin />
           <button className="btn btn-primary" onClick={logout}>Cerrrar Sesión</button>
+          <NavBarAdmin />
         </div>
         <div className="col-9">
           <div className="d-flex flex-column mt-3">
