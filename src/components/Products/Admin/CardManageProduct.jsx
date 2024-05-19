@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 export const CardManageProduct = ({ product, onEditClick, onDeleteClick }) => {
-
   return (
     <div className="row">
       <div className="col-10 card-product ">
@@ -26,3 +25,6 @@ export const CardManageProduct = ({ product, onEditClick, onDeleteClick }) => {
     </div>
   );
 };
+
+
+

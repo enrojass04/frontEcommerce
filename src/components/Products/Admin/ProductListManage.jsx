@@ -14,6 +14,7 @@ const ProductListManage = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const getProducts = async (page) => {
     const data = await productService.getAProductsPages(page);
@@ -45,11 +46,43 @@ const ProductListManage = () => {
   };
 
   const handleUpdateProduct = (updatedProduct) => {
-    getProducts(currentPage); // Refrescar la lista de productos
-    setShowSuccessMessage(true); // Mostrar mensaje de éxito
+    const updatedProducts = products.map((p) =>
+      p.id === updatedProduct.id ? updatedProduct : p
+    );
+    setProducts(updatedProducts);
+    showTemporaryMessage("¡Producto actualizado correctamente!");
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    await productService.deleteProductService(productId);
+    getProducts(currentPage);
+    showTemporaryMessage("¡Producto eliminado correctamente!");
+  };
+
+  const showTemporaryMessage = (message) => {
+    setSuccessMessage(message);
+    setShowSuccessMessage(true);
     setTimeout(() => {
-      setShowSuccessMessage(false); // Ocultar mensaje después de 3 segundos
+      setShowSuccessMessage(false);
     }, 3000);
+  };
+
+  const handleEditClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleDeleteClick = (product) => {
+    setSelectedProduct(product);
+    setShowDelete(true);
+  };
+
+  const handleCloseUpdate = () => {
+    setSelectedProduct(null);
+  };
+
+  const handleCloseDelete = () => {
+    setShowDelete(false);
+    setSelectedProduct(null);
   };
 
   return (
@@ -62,21 +95,29 @@ const ProductListManage = () => {
       />
       <ModalDelete
         showDelete={showDelete}
-        handleCloseDelete={() => setShowDelete(false)}
+        handleCloseDelete={handleCloseDelete}
+        product={selectedProduct}
+        onDelete={handleDeleteProduct}
       />
       <ModalUpdate
-        showUpdate={selectedProduct !== null}
-        handleCloseUpdate={() => setSelectedProduct(null)}
+        showUpdate={selectedProduct !== null && !showDelete}
+        handleCloseUpdate={handleCloseUpdate}
         product={selectedProduct}
         onUpdate={handleUpdateProduct}
       />
+
+      {showSuccessMessage && (
+        <div className="alert alert-success mt-3" role="alert">
+          {successMessage}
+        </div>
+      )}
 
       <div className="d-flex flex-column mt-3">
         {products?.map((product) => (
           <div key={product.id} className="mb-4">
             <CardManageProduct
-              onEditClick={() => setSelectedProduct(product)}
-              onDeleteClick={() => setShowDelete(true)}
+              onEditClick={() => handleEditClick(product)}
+              onDeleteClick={() => handleDeleteClick(product)}
               key={product.id}
               product={product}
             />
@@ -117,21 +158,13 @@ const ProductListManage = () => {
           </li>
         </ul>
       </nav>
-      {showSuccessMessage && (
-        <div className="alert alert-success" role="alert">
-          ¡Producto actualizado correctamente!
-          <button
-            type="button"
-            className="btn-close"
-            aria-label="Close"
-            onClick={() => setShowSuccessMessage(false)}
-          ></button>
-        </div>
-      )}
     </div>
   );
 };
 
 export default ProductListManage;
+
+
+
 
 
