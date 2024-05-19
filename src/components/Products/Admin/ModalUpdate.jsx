@@ -3,20 +3,23 @@ import { Button, Modal, Form, Alert } from "react-bootstrap";
 import * as productService from "../../../services/ProductService";
 
 const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
-  const [updatedProduct, setUpdatedProduct] = useState({});
-
+  const [updatedProduct, setUpdatedProduct] = useState({
+    // Inicializar el valor del campo de verificación con un valor predeterminado
+    isActive: product ? product.isActive : false, // O utiliza true si el producto está activo por defecto
+  });
   useEffect(() => {
-    if (showUpdate) {
+    if (showUpdate && product) {
       // Cargar los datos del producto al abrir el modal para su edición
       setUpdatedProduct(product);
     }
   }, [showUpdate, product]);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
+    const inputValue = type === "checkbox" ? checked : value;
     setUpdatedProduct((prevProduct) => ({
       ...prevProduct,
-      [name]: value,
+      [name]: inputValue,
     }));
   };
 
@@ -72,15 +75,13 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
           </div>
           <div className="form-group">
             <label>Estado del Producto</label>
-            <select
-              className="form-control"
+            <Form.Check
+              type="checkbox"
               name="isActive"
-              value={updatedProduct.isActive || ""}
+              label={updatedProduct.isActive ? "Activo" : "No Activo"}
+              checked={updatedProduct.isActive}
               onChange={handleInputChange}
-            >
-              <option value="Activo">Activo</option>
-              <option value="Inactivo">Inactivo</option>
-            </select>
+            />
           </div>
           {/* Otros campos del formulario */}
         </Form>
@@ -98,4 +99,3 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
 };
 
 export default ModalUpdate;
-

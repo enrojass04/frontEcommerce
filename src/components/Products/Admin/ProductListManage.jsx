@@ -7,25 +7,13 @@ import ModalDelete from "./ModalDelete";
 import ModalUpdate from "./ModalUpdate";
 
 const ProductListManage = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [showSave, setShowSave] = useState(false);
-  const handleCloseSave = () => setShowSave(false);
-  const handleShowSave = () => setShowSave(true);
-
   const [showDelete, setShowDelete] = useState(false);
-  const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => setShowDelete(true);
-
-  const [showUpdate, setShowUpdate] = useState(false);
-  const handleCloseUpdate = () => setShowUpdate(false);
-  const handleShowUpdate = (product) => {
-    setSelectedProduct(product); // Guardar el producto seleccionado en el estado
-    setShowUpdate(true);
-  };
-
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para almacenar el producto seleccionado
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const getProducts = async (page) => {
     const data = await productService.getAProductsPages(page);
@@ -52,46 +40,47 @@ const ProductListManage = () => {
     }
   };
 
-  const handleSaveNewProduct = async () => {
+  const handleSaveNewProduct = () => {
     getProducts(currentPage);
   };
 
-  const handleUpdateProduct = async (updatedProduct) => {
-    try {
-      // Lógica para actualizar el producto en el estado del componente ProductListManage
-      // Por ejemplo:
-      const updatedProducts = products.map((p) => (p.id === updatedProduct.id ? updatedProduct : p));
-      setProducts(updatedProducts);
-    } catch (error) {
-      console.error("Error al actualizar el producto:", error);
-    }
+  const handleUpdateProduct = (updatedProduct) => {
+    const updatedProducts = products.map((p) =>
+      p.id === updatedProduct.id ? updatedProduct : p
+    );
+    setProducts(updatedProducts);
+    setShowSuccessMessage(true); // Mostrar mensaje de éxito
+  };
+
+  const handleHideSuccessMessage = () => {
+    setShowSuccessMessage(false);
   };
 
   return (
     <div>
-      <ButtonAdd onClick={handleShowSave} />
+      <ButtonAdd onClick={() => setShowSave(true)} />
       <ModalSave
         showSave={showSave}
-        handleCloseSave={handleCloseSave}
+        handleCloseSave={() => setShowSave(false)}
         onSave={handleSaveNewProduct}
       />
       <ModalDelete
         showDelete={showDelete}
-        handleCloseDelete={handleCloseDelete}
+        handleCloseDelete={() => setShowDelete(false)}
       />
       <ModalUpdate
-        showUpdate={showUpdate}
-        handleCloseUpdate={handleCloseUpdate}
-        product={selectedProduct} // Pasar el producto seleccionado al modal de edición
-        onUpdate={handleUpdateProduct} // Agregar la función onUpdate
+        showUpdate={selectedProduct !== null}
+        handleCloseUpdate={() => setSelectedProduct(null)}
+        product={selectedProduct}
+        onUpdate={handleUpdateProduct}
       />
 
       <div className="d-flex flex-column mt-3">
         {products?.map((product) => (
           <div key={product.id} className="mb-4">
             <CardManageProduct
-              onEditClick={() => handleShowUpdate(product)} // Pasar el producto al hacer clic en editar
-              onDeleteClick={() => handleShowDelete()}
+              onEditClick={() => setSelectedProduct(product)}
+              onDeleteClick={() => setShowDelete(true)}
               key={product.id}
               product={product}
             />
@@ -100,8 +89,49 @@ const ProductListManage = () => {
       </div>
 
       <nav aria-label="Page navigation">
-        {/* Resto del código para la paginación */}
+        <ul className="pagination">
+          <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+            <a className="page-link" href="#" onClick={handlePrevious}>
+              Previous
+            </a>
+          </li>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <li
+              className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+              key={index + 1}
+            >
+              <a
+                className="page-link"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentPage(index + 1);
+                }}
+              >
+                {index + 1}
+              </a>
+            </li>
+          ))}
+          <li
+            className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
+          >
+            <a className="page-link" href="#" onClick={handleNext}>
+              Next
+            </a>
+          </li>
+        </ul>
       </nav>
+      {showSuccessMessage && (
+        <div className="alert alert-success" role="alert">
+          ¡Producto actualizado correctamente!
+          <button
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+            onClick={handleHideSuccessMessage}
+          ></button>
+        </div>
+      )}
     </div>
   );
 };

@@ -34,22 +34,18 @@ export const createProductService = async (newProduct) => {
 };
 
 export const updateProductService = async (productId, updatedProductData) => {
-  try {
-    const response = await fetch(`${API_URL}/${productId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProductData),
-    });
-    if (!response.ok) {
-      throw new Error("Error al actualizar el producto");
-    }
-    const updatedProduct = await response.json();
-    return updatedProduct;
-  } catch (error) {
-    throw new Error("Error al actualizar el producto: " + error.message);
+  const response = await fetch(`${API_URL}/${productId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedProductData),
+  });
+  if (!response.ok) {
+    throw new Error("Error updating product");
   }
+  const updatedProduct = await response.json();
+  return updatedProduct;
 };
 
 export const deleteProductService = async (productId) => {
