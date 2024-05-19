@@ -23,9 +23,9 @@ const Login = () => {
     if (resp.ok) {
       const result = await resp.json();
       localStorage.setItem("dataUserLogin", JSON.stringify(result));
-      setMessage("Usuario registrado correctamente"); // Mostrar mensaje
+      setMessage(`Bienvenido`); 
       setTimeout(() => {
-        setMessage(""); // Ocultar mensaje después de 2 segundos
+        setMessage(""); 
         navigate("/");
         window.location.reload();
       }, 2000);

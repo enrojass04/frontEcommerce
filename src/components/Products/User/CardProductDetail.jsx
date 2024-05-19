@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const CardProductDetail = ({ product }) => {
+  const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
+  const isUserLogged = datosUsuario?.user?.id_role === 2;
+
   const [quantity, setQuantity] = useState(1);
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -16,7 +19,7 @@ const CardProductDetail = ({ product }) => {
   return (
     <div>
       <div>
-        <Link to='/products' className="btn btn-primary">
+        <Link to="/products" className="btn btn-primary">
           Regresar
         </Link>
       </div>
@@ -41,7 +44,7 @@ const CardProductDetail = ({ product }) => {
               >
                 +
               </button>
-              <button className="btn btn-primary">Add To Cart</button>
+              <button className="btn btn-primary" disabled={!isUserLogged}>Add To Cart</button>
             </div>
           </div>
         </div>
