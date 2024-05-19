@@ -4,25 +4,24 @@ import Modal from "react-bootstrap/Modal";
 
 const ModalDelete = ({ showDelete, handleCloseDelete }) => {
   return (
-    <div>
-      <Modal show={showDelete} onHide={handleCloseDelete}>
-        <Modal.Header closeButton>
-          <Modal.Title>Nuevo Producto</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h1>Modal Delete</h1>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseDelete}>
-            Close
-          </Button>
-          <Button type="submit" variant="primary" onClick={handleCloseDelete}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
+    <Modal show={showDelete} onHide={handleCloseDelete}>
+      <Modal.Header closeButton>
+        <Modal.Title>Eliminar Producto</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>¿Estás seguro de que deseas eliminar este producto?</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleCloseDelete}>
+          Cancelar
+        </Button>
+        <Button type="submit" variant="danger" onClick={handleCloseDelete}>
+          Eliminar
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 
 export default ModalDelete;
+
