@@ -18,6 +18,15 @@ export const getAProductsPages = async (page) => {
   return data;
 };
 
+export const getAProduct = async (id) => {
+  const response = await fetch(`${API_URL}/${id}`);
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  const data = await response.json();
+  return data;
+};
+
 export const createProductService = async (newProduct) => {
   const response = await fetch(API_URL, {
     method: "POST",
