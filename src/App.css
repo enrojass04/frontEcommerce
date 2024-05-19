@@ -293,3 +293,22 @@ nav ul li a {
 }
 
 /* Modal-End */
+
+/* Profile */
+.profile-picture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.profile-details h2 {
+  margin: 10px 0;
+  font-size: 24px;
+}
+/* Profile-End */

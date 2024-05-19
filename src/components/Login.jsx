@@ -3,8 +3,9 @@ import * as loginService from "../services/LoginService";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(""); // Estado para el mensaje
   const navigate = useNavigate();
 
   const changeEmail = (email) => {
@@ -22,8 +23,12 @@ const Login = () => {
     if (resp.ok) {
       const result = await resp.json();
       localStorage.setItem("dataUserLogin", JSON.stringify(result));
-      navigate("/");
-      window.location.reload();
+      setMessage("Usuario registrado correctamente"); // Mostrar mensaje
+      setTimeout(() => {
+        setMessage(""); // Ocultar mensaje después de 2 segundos
+        navigate("/");
+        window.location.reload();
+      }, 2000);
     } else {
       console.error("Error en el inicio de sesión");
     }
@@ -48,6 +53,7 @@ const Login = () => {
         </div>
         <button type="submit">Iniciar sesión</button>
       </form>
+      {message && <p>{message}</p>}
     </div>
   );
 };
