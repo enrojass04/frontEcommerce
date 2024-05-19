@@ -45,15 +45,11 @@ const ProductListManage = () => {
   };
 
   const handleUpdateProduct = (updatedProduct) => {
-    const updatedProducts = products.map((p) =>
-      p.id === updatedProduct.id ? updatedProduct : p
-    );
-    setProducts(updatedProducts);
+    getProducts(currentPage); // Refrescar la lista de productos
     setShowSuccessMessage(true); // Mostrar mensaje de éxito
-  };
-
-  const handleHideSuccessMessage = () => {
-    setShowSuccessMessage(false);
+    setTimeout(() => {
+      setShowSuccessMessage(false); // Ocultar mensaje después de 3 segundos
+    }, 3000);
   };
 
   return (
@@ -128,7 +124,7 @@ const ProductListManage = () => {
             type="button"
             className="btn-close"
             aria-label="Close"
-            onClick={handleHideSuccessMessage}
+            onClick={() => setShowSuccessMessage(false)}
           ></button>
         </div>
       )}

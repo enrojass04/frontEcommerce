@@ -4,12 +4,11 @@ import * as productService from "../../../services/ProductService";
 
 const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
   const [updatedProduct, setUpdatedProduct] = useState({
-    // Inicializar el valor del campo de verificación con un valor predeterminado
-    isActive: product ? product.isActive : false, // O utiliza true si el producto está activo por defecto
+    isActive: product ? product.isActive : false,
   });
+
   useEffect(() => {
     if (showUpdate && product) {
-      // Cargar los datos del producto al abrir el modal para su edición
       setUpdatedProduct(product);
     }
   }, [showUpdate, product]);
@@ -26,7 +25,7 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
   const handleSaveChanges = async () => {
     try {
       const updatedProductResponse = await productService.updateProductService(product.id, updatedProduct);
-      onUpdate(updatedProductResponse); // Actualizar el producto en el componente padre
+      onUpdate(updatedProductResponse.data); // Actualizar el producto en el componente padre
       handleCloseUpdate(); // Cerrar el modal después de la actualización
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
@@ -83,7 +82,6 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
               onChange={handleInputChange}
             />
           </div>
-          {/* Otros campos del formulario */}
         </Form>
       </Modal.Body>
       <Modal.Footer>
