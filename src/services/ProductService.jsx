@@ -9,6 +9,15 @@ export const getProductsService = async () => {
   return data;
 };
 
+// ProductService.js
+export const getProductsByCategory = async (categoryId) => {
+  const response = await fetch(`${API_URL}/category/${categoryId}`);
+  const data = await response.json();
+  return data;
+};
+
+
+
 export const getAProductsPages = async (page) => {
   const response = await fetch(`${API_URL}/pages?page=${page}`);
   if (!response.ok) {
@@ -66,3 +75,4 @@ export const deleteProductService = async (productId) => {
   }
   return response.json();
 };
+

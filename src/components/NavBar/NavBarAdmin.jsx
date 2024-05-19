@@ -26,6 +26,11 @@ const NavBarAdmin = () => {
               Product
             </Link>
           </li>
+          <li className="my-3">
+            <Link to="image" className="text-dark text-decoration-none p-2">
+              Image
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

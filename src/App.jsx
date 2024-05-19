@@ -13,6 +13,7 @@ import ListManageUser from "./components/Users/Admin/ListManageUser";
 import ListManageCategory from "./components/Categories/Admin/ListManageCategory";
 import HomeAdmin from "./pages/Admin/HomeAdmin";
 import ProductDetail from "./components/Products/User/ProductDetail";
+import ListManageImage from "./components/Images/Admin/ListManageImage"
 
 const AdminRoutes = () => (
   <Routes>
@@ -20,6 +21,7 @@ const AdminRoutes = () => (
       <Route path="product" element={<ProductListManage />} />
       <Route path="user" element={<ListManageUser />} />
       <Route path="category" element={<ListManageCategory />} />
+      <Route path="image" element={<ListManageImage />} />
     </Route>
   </Routes>
 );
