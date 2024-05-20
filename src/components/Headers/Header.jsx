@@ -1,5 +1,4 @@
-// src/components/Header.jsx
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBarUser from "../NavBar/NavBarUser";
 import ShoppingCart from "../Cart/ShoppingCart";
@@ -11,12 +10,24 @@ import "../../App.css";
 export const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cartItems } = useContext(CartContext);
+  const cartButtonRef = useRef(null);
+  const [cartPosition, setCartPosition] = useState({ top: 0, left: 0 });
 
-  const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
+  useEffect(() => {
+    if (cartButtonRef.current) {
+      const rect = cartButtonRef.current.getBoundingClientRect();
+      setCartPosition({
+        top: rect.bottom + window.scrollY,
+        left: rect.left + window.scrollX,
+      });
+    }
+  }, [isCartOpen]);
 
   const toggleCart = () => {
-    setIsCartOpen((prev) => !prev);
+    setIsCartOpen(!isCartOpen);
   };
+
+  const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
 
   return (
     <header>
@@ -38,12 +49,19 @@ export const Header = () => {
                 src={iconos.cart}
                 alt="icono cart"
                 onClick={toggleCart}
+                ref={cartButtonRef}
               />
             </li>
           )}
         </ul>
       </nav>
-      <ShoppingCart isOpen={isCartOpen} />
+      {isCartOpen && (
+        <ShoppingCart
+          cartItems={cartItems}
+          position={cartPosition}
+          onClose={toggleCart}
+        />
+      )}
     </header>
   );
 };
