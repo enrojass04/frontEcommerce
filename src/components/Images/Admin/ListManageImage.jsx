@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { CardManageImage } from "./CardManageImage";
 import * as imageService from "../../../services/ImageService";
 import ButtonAdd from "../../ButtonAdd";
+import ModalSave from "./ModalSave";
 
 const ListManageImage = () => {
   const [images, setImages] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1); // Inicializar en la primera página
+  const [currentPage, setCurrentPage] = useState(1); 
+  const [showSave, setShowSave] = useState(false);
 
   const getImages = async (page) => {
     const data = await imageService.getAImagesPages(page);
@@ -33,9 +35,18 @@ const ListManageImage = () => {
     }
   };
 
+  const handleSaveNewImage = () => {
+    getImages(currentPage);
+  };
+
   return (
     <div>
-      <ButtonAdd/>
+      <ButtonAdd onClick={() => setShowSave(true)} />
+      <ModalSave
+        showSave={showSave}
+        handleCloseSave={() => setShowSave(false)}
+        onSave={handleSaveNewImage}
+      />
 
       <div className="d-flex flex-column mt-3">
         {images?.map((image) => (

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal, Form, Alert } from "react-bootstrap";
 import * as productService from "../../../services/ProductService";
+import * as imageService from "../../../services/ImageService";
 
 const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
   const [updatedProduct, setUpdatedProduct] = useState({
     isActive: product ? product.isActive : false,
   });
+  // imagenes
+  const [imagenBase64, setImagenBase64] = useState("");
 
   useEffect(() => {
     if (showUpdate && product) {
@@ -24,11 +27,41 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
 
   const handleSaveChanges = async () => {
     try {
-      const updatedProductResponse = await productService.updateProductService(product.id, updatedProduct);
-      onUpdate(updatedProductResponse.data); // Actualizar el producto en el componente padre
-      handleCloseUpdate(); // Cerrar el modal después de la actualización
+      const updatedProductResponse = await productService.updateProductService(
+        product.id,
+        updatedProduct
+      );
+      if (imagenBase64 !== "") {
+        handleSaveImages();
+      }
+      onUpdate(updatedProductResponse.data);
+      handleCloseUpdate();
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
+    }
+  };
+
+  // images
+
+  const handleSaveImages = async () => {
+    // const imageToSave = { ...imagenBase64 };
+    try {
+      const imageToSave = { url_image: imagenBase64, id_product: product.id };
+
+      await imageService.createImageService(imageToSave);
+    } catch (error) {
+      console.error("Error creating image:", error);
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const archivo = e.target.files[0];
+    if (archivo) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagenBase64(reader.result.split(",")[1]);
+      };
+      reader.readAsDataURL(archivo);
     }
   };
 
@@ -46,7 +79,7 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
               className="form-control"
               id="productName"
               name="name_product"
-              value={updatedProduct.name_product || ''}
+              value={updatedProduct.name_product || ""}
               onChange={handleInputChange}
             />
           </div>
@@ -57,7 +90,7 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
               className="form-control"
               id="productPrice"
               name="price_product"
-              value={updatedProduct.price_product || ''}
+              value={updatedProduct.price_product || ""}
               onChange={handleInputChange}
             />
           </div>
@@ -68,7 +101,7 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
               className="form-control"
               id="productQuantity"
               name="quantity_product"
-              value={updatedProduct.quantity_product || ''}
+              value={updatedProduct.quantity_product || ""}
               onChange={handleInputChange}
             />
           </div>
@@ -82,6 +115,10 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
               onChange={handleInputChange}
             />
           </div>
+          <Form.Group controlId="formImageUpload">
+              <Form.Label>Image</Form.Label>
+              <Form.Control type="file" onChange={handleFileChange} />
+            </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>

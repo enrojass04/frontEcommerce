@@ -16,7 +16,6 @@ export const Products = () => {
             <Link to="/">Home </Link> / 
             <p> Productos</p>
           </div>
-
         </div>
       </section>
       <div className="d-flex justify-content-center">

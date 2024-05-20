@@ -74,7 +74,7 @@ const ProductList = () => {
             </select>
           </div>
           {products?.map((product) => (
-            <div key={product.id} sm={12} md={6} lg={4} className="col-4 mb-4">
+            <div key={product.id} sm={12} md={6} lg={4} className="col-6 mb-4">
               <CardProduct key={product.id} product={product} />
             </div>
           ))}
