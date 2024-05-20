@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CardProduct from "../User/CardProduct";
+import FooterMyAccount from "../../Footers/FooterMyAccount";
 import * as productService from "../../../services/ProductService";
 import * as categoryService from "../../../services/CategoryService";
+import iconos from "../../../assets/iconos";
+import "../../../App.css";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -28,7 +31,10 @@ const ProductList = () => {
       if (Array.isArray(data)) {
         setCategories(data);
       } else {
-        console.error("El servicio de categorías no devolvió un array válido:", data);
+        console.error(
+          "El servicio de categorías no devolvió un array válido:",
+          data
+        );
       }
     } catch (error) {
       console.error("Error al obtener las categorías:", error);
@@ -65,11 +71,20 @@ const ProductList = () => {
     <div>
       <div className="container">
         <div className="row mt-3">
-          <div className="col-12 mb-3">
-            <select className="form-select" onChange={handleCategoryChange} value={category}>
+          <div className="d-flex align-items-center gap-2 mb-3 form-container">
+            <div>
+              <img src={iconos.filter} alt="" />
+            </div>
+            <select
+              className="form-select" //filtro de categorias
+              onChange={handleCategoryChange}
+              value={category}
+            >
               <option value="">Todas las categorías</option>
               {categories.map((category) => (
-                <option key={category.id} value={category.id}>{category.name_category}</option>
+                <option key={category.id} value={category.id}>
+                  {category.name_category}
+                </option>
               ))}
             </select>
           </div>
@@ -81,7 +96,7 @@ const ProductList = () => {
         </div>
       </div>
       <nav aria-label="Page navigation">
-        <ul className="pagination">
+        <ul className="pagination justify-content-center">
           <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
             <a className="page-link" href="#" onClick={handlePrevious}>
               Previous
@@ -89,7 +104,9 @@ const ProductList = () => {
           </li>
           {Array.from({ length: totalPages }, (_, index) => (
             <li
-              className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+              className={`page-item ${
+                currentPage === index + 1 ? "active" : ""
+              }`}
               key={index + 1}
             >
               <a
@@ -104,17 +121,22 @@ const ProductList = () => {
               </a>
             </li>
           ))}
-          <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+          <li
+            className={`page-item ${
+              currentPage === totalPages ? "disabled" : ""
+            }`}
+          >
             <a className="page-link" href="#" onClick={handleNext}>
               Next
             </a>
           </li>
         </ul>
       </nav>
+      <div>
+        <FooterMyAccount />
+      </div>
     </div>
   );
 };
 
 export default ProductList;
-
-
