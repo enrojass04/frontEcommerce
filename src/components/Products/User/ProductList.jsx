@@ -76,7 +76,7 @@ const ProductList = () => {
               <img src={iconos.filter} alt="" />
             </div>
             <select
-              className="form-select" //filtro de categorias
+              className="form-select"
               onChange={handleCategoryChange}
               value={category}
             >
@@ -90,7 +90,11 @@ const ProductList = () => {
           </div>
           {products?.map((product) => (
             <div key={product.id} sm={12} md={6} lg={4} className="col-6 mb-4">
-              <CardProduct key={product.id} product={product} />
+              <CardProduct
+                key={product.id}
+                product={product}
+                images={product.images} 
+              />
             </div>
           ))}
         </div>
@@ -132,9 +136,6 @@ const ProductList = () => {
           </li>
         </ul>
       </nav>
-      <div>
-        <FooterMyAccount />
-      </div>
     </div>
   );
 };

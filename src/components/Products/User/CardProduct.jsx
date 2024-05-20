@@ -1,30 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import imagenes from "../../../assets/imagenes";
 import "../../../App.css";
 
-const CardProduct = ({ product }) => {
-  const numProducto = product.id;
-  const imagenUrl = imagenes[`imgpro${numProducto}`];
+const CardProduct = ({ product, images }) => {
+  const imageUrl = images.length > 0 ? images[0].url_image : "default_image_url"; /* A */
   return (
-    // <div>
-    //   <div className="card">
-    //     <div className="card-body row ">
-    //       <h5 className="card-title col">{product.name_product}</h5>
-    //       <p className="card-text col">{product.description}</p>
-    //       <p className="card-text col">{product.price_product}</p>
-    //       <Link to={`/products/${product.id}`} className="btn btn-primary">
-    //         Ver más
-    //       </Link>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="card">
-      <img
-        src={imagenUrl}
-        className="card-img-top"
-        alt={`Producto ${numProducto}`}
-      />
+      <img src={`data:image/png;base64, ${imageUrl}`} 
+      alt={`Producto ${product.id}`}
+      className="card-img-top rounded mt-2" />
       <div className="card-body row">
         <div className="col-12 text-start">
           <h5 className="card-title">{product.name_product}</h5>
