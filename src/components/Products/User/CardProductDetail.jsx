@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+// src/components/CardProductDetail/CardProductDetail.jsx
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../Cart/CartContext";
 
 const CardProductDetail = ({ product }) => {
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
   const isUserLogged = datosUsuario?.user?.id_role === 2;
 
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useContext(CartContext);
+
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
@@ -14,6 +18,15 @@ const CardProductDetail = ({ product }) => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    const newItem = {
+      name: product.name_product,
+      price: product.price_product,
+      quantity: quantity,
+    };
+    addToCart(newItem);
   };
 
   return (
@@ -44,7 +57,13 @@ const CardProductDetail = ({ product }) => {
               >
                 +
               </button>
-              <button className="btn btn-primary" disabled={!isUserLogged}>Add To Cart</button>
+              <button
+                className="btn btn-primary"
+                disabled={!isUserLogged}
+                onClick={handleAddToCart}
+              >
+                Add To Cart
+              </button>
             </div>
           </div>
         </div>
@@ -54,3 +73,5 @@ const CardProductDetail = ({ product }) => {
 };
 
 export default CardProductDetail;
+
+

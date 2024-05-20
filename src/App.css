@@ -129,7 +129,7 @@ nav ul li a {
 
 .banner {
   display: flex;
-  background-image: url(../src/assets/img/scandinavian-interior-mockup-wall-decal-background\ 1.png);
+  background-image: url(../src/assets/img/technology-panoramic-banner.jpg);
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -154,7 +154,7 @@ nav ul li a {
 }
 
 .banner-page{
-  background-image: url(/src/assets/img/banner-rect.png);
+  background-image: url(/src/assets/img/102352.jpg);
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -312,3 +312,146 @@ nav ul li a {
   font-size: 24px;
 }
 /* Profile-End */
+
+ /* card-product */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+  margin: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.card-text {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.precio {
+  font-size: 1.2rem;
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.boton-card {
+  margin-top: 3px;
+  width: 50%;
+  padding: 5px 20px;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;    
+}
+
+.boton-card:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .card-body {
+    text-align: center;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .precio {
+    font-size: 1rem;
+  }
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden; /* Para asegurar que la imagen no se desborde */
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-img-top {
+  width: 100%; 
+  height: 200px; 
+  object-fit: contain; 
+  transition: transform 0.2s ease-in-out; 
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.2); /* Aumenta el tamaño de la imagen al hacer hover */
+}
+
+/* card-product */
+
+/* filtro categorias */
+.form-container {
+  width: 100%;
+  background-color: #FAF4F4; 
+  padding: 10px;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+
+.form-select {
+  width: 40% !important;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.form-select:focus{
+  border-color: #FAF4F4 !important;
+}
+
+
+@media (max-width: 768px) {
+  .form-select {
+    width: 100% !important;
+  }
+}
+/* filtro categorias */
+
+/* paginación */
+.pagination {
+  .page-link{
+    border-radius: 10px !important;
+    color: #000;
+  }
+
+  .active>.page-link, .page-link.active {
+    background-color: #FBEBB5 !important;
+    border-color: #FBEBB5;
+    color: #000;
+  }
+
+  .page-item :active{
+    background-color: #FBEBB5 !important;
+  }
+
+  .page-link:hover {
+    background-color: #FBEBB5 !important;
+    color: #000;
+  }
+
+  .page-link:focus{
+    box-shadow: 0 0 0 0.25rem rgba(253, 237, 13, 0.25);
+  }
+}
+/* paginación */
