@@ -5,11 +5,8 @@ export const getCategoriesService = async () => {
   if (!response.ok) {
     throw new Error("Error de conexión");
   }
-
   const data = await response.json();
   return data;
-  /* const { categories } = await response.json();
-  return categories || []; // Devuelve un array vacío si no hay categorías */
 };
 
 export const getCategory = async (categoryId) => {

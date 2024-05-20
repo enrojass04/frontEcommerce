@@ -28,8 +28,8 @@ const ProductList = () => {
   const getCategories = async () => {
     try {
       const data = await categoryService.getCategoriesService();
-      if (Array.isArray(data)) {
-        setCategories(data);
+      if (Array.isArray(data.categories)) {
+        setCategories(data.categories);
       } else {
         console.error(
           "El servicio de categorías no devolvió un array válido:",
