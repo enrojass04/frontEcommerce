@@ -35,8 +35,8 @@ const ShoppingCart = ({ position, onClose }) => {
       }}
     >
       <div className="shopping-cart-header">
-        <h4>Shopping Cart</h4>
-        <button onClick={onClose}>Close</button>
+        <h4 className="fw-bold">Shopping Cart</h4>
+        <button onClick={onClose} className="btn-close"></button>
       </div>
       <div className="shopping-cart-body">
         {cartItems.map((item, index) => (
@@ -55,8 +55,12 @@ const ShoppingCart = ({ position, onClose }) => {
         <strong>Total: </strong> ${totalPrice.toFixed(2)}
       </div>
       <div className="shopping-cart-footer">
-        <button onClick={clearCart}>Vaciar Carrito</button>
-        <button onClick={HandleCheckout}>Checkout</button>
+        <button onClick={clearCart} className="boton-card">
+          Vaciar Carrito
+        </button>
+        <button onClick={HandleCheckout} className="boton-card">
+          Checkout
+        </button>
       </div>
     </div>
   );

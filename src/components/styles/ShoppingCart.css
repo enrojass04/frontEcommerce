@@ -3,7 +3,8 @@
   width: 300px; /* Adjust width accordingly */
   height: 50vh; /* Set height to half of the screen */
   background: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 15px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -12,8 +13,12 @@
 }
 
 .shopping-cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   padding: 1rem;
   border-bottom: 1px solid #ddd;
+
 }
 
 .shopping-cart-body {
@@ -44,5 +49,10 @@
   border-top: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
+
+  button{
+    font-size: 12px;
+    font-weight: 600;
+  }
 }
 
