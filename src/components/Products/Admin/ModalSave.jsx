@@ -12,16 +12,17 @@ const ModalSave = ({ showSave, handleCloseSave, onSave }) => {
     id_category: "",
   });
 
+  const [imagenBase64, setImagenBase64] = useState("");
+
   const [categories, setCategories] = useState([]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showFailMessage, setShowFailMessage] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const data = await categoryService.getCategoriesService();
         setCategories(data.categories);
-        console.log("Lista Categorías");
-        console.log(data.categories);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -39,17 +40,29 @@ const ModalSave = ({ showSave, handleCloseSave, onSave }) => {
   };
 
   const handleSaveChanges = async () => {
+    if (!imagenBase64) {
+      setShowFailMessage(true);
+      setTimeout(() => {
+        setShowFailMessage(false);
+      }, 2000);
+      return;
+    }
+
     const productToSave = {
       ...newProduct,
       id_category: parseInt(newProduct.id_category, 10),
     };
     try {
-      await productService.createProductService(productToSave);
+      const savedProduct = await productService.createProductService(
+        productToSave
+      );
+      await handleSaveImages(savedProduct.id);
       onSave();
       handleCloseSave();
       resetForm();
       showSuccessNotification();
     } catch (error) {
+      showSuccessNotificationFail();
       console.error("Error creating product:", error);
     }
   };
@@ -62,6 +75,7 @@ const ModalSave = ({ showSave, handleCloseSave, onSave }) => {
       description: "",
       id_category: "",
     });
+    setImagenBase64("");
   };
 
   const showSuccessNotification = () => {
@@ -71,12 +85,38 @@ const ModalSave = ({ showSave, handleCloseSave, onSave }) => {
     }, 2000);
   };
 
+  const handleSaveImages = async () => {
+    try {
+      const imageToSave = { url_image: imagenBase64, id_product: product.id };
+
+      await imageService.createImageService(imageToSave);
+    } catch (error) {
+      console.error("Error creating image:", error);
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const archivo = e.target.files[0];
+    if (archivo) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagenBase64(reader.result.split(",")[1]);
+      };
+      reader.readAsDataURL(archivo);
+    }
+  };
+
   return (
     <div>
       {showSuccessMessage && (
-        <Alert variant="success">Product saved successfully!</Alert>
+        <Alert variant="success">Producto Guardado!!</Alert>
       )}
       <Modal show={showSave} onHide={handleCloseSave}>
+        {showFailMessage && (
+          <Alert variant="danger">
+            Debe cargar una imagen para guardar el producto!!
+          </Alert>
+        )}
         <Modal.Header closeButton>
           <Modal.Title>Nuevo Producto</Modal.Title>
         </Modal.Header>
@@ -135,6 +175,10 @@ const ModalSave = ({ showSave, handleCloseSave, onSave }) => {
                   </option>
                 ))}
               </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="formImageUpload">
+              <Form.Label>Image</Form.Label>
+              <Form.Control type="file" onChange={handleFileChange} />
             </Form.Group>
           </Form>
         </Modal.Body>

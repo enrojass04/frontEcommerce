@@ -7,7 +7,7 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
   const [updatedProduct, setUpdatedProduct] = useState({
     isActive: product ? product.isActive : false,
   });
-  // imagenes
+
   const [imagenBase64, setImagenBase64] = useState("");
 
   useEffect(() => {
@@ -42,9 +42,7 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
   };
 
   // images
-
   const handleSaveImages = async () => {
-    // const imageToSave = { ...imagenBase64 };
     try {
       const imageToSave = { url_image: imagenBase64, id_product: product.id };
 
@@ -116,9 +114,9 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
             />
           </div>
           <Form.Group controlId="formImageUpload">
-              <Form.Label>Image</Form.Label>
-              <Form.Control type="file" onChange={handleFileChange} />
-            </Form.Group>
+            <Form.Label>Image</Form.Label>
+            <Form.Control type="file" onChange={handleFileChange} />
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>

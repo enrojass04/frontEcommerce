@@ -48,11 +48,11 @@ const CardProductDetail = ({ product, images }) => {
               <p className="card-text col">{product.description}</p>
             </div>
             <div className="quantity-selector mb-3">
-              <button onClick={handleDecrement} className="boton-card mx-2">
+              <button onClick={handleDecrement} className="boton-card mx-3">
                 -
               </button>
               <span className="quantity">{quantity}</span>
-              <button onClick={handleIncrement} className="boton-card mx-2">
+              <button onClick={handleIncrement} className="boton-card mx-3">
                 +
               </button>
               <button
