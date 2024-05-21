@@ -40,6 +40,8 @@ const CardProductDetail = ({ product, images }) => {
           alt={`Producto ${product.id}`}
           className="card-img-top rounded mt-2"
         />
+
+        
         {/* <img
           src={`data:image/png;base64, ${imageUrl2}`}
           alt={`Producto ${product.id}`}
