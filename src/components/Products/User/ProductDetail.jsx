@@ -10,13 +10,21 @@ const ProductDetail = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [noImagesMessage, setNoImagesMessage] = useState("");
 
   const getProductDetail = async () => {
     try {
       const dataProduct = await getAProduct.getAProduct(id);
       const dataImages = await getAImages.getImagesById(id);
+
       setProduct(dataProduct.product);
-      setImages(dataImages.images);
+
+      if (dataImages.images && dataImages.images.length > 0) {
+        setImages(dataImages.images);
+      } else if (dataImages.message) {
+        setNoImagesMessage(dataImages.message);
+      }
+
       setLoading(false);
     } catch (error) {
       setError(error.message);
@@ -40,7 +48,10 @@ const ProductDetail = () => {
     <div>
       <h2>Detalle del Producto</h2>
       {product ? (
-        <CardProductDetail product={product} images={images} />
+        <>
+          {noImagesMessage && <p>{noImagesMessage}</p>}
+          <CardProductDetail product={product} images={images} />
+        </>
       ) : (
         <p>No se encontró el producto.</p>
       )}

@@ -31,18 +31,17 @@ export const getImagesById = async (productId) => {
   try {
     const response = await fetch(`${API_URL}/${productId}`);
     if (response.status === 404) {
-      // Devuelve una lista vacía si no se encuentran imágenes
-      return { images: [] };
+      // Si la respuesta es 404, retornamos un objeto vacío
+      return { images: [] , message: "Producto no tiene imagen. Agregar imágenes al producto"};
     }
     if (!response.ok) {
       throw new Error('Error de conexión');
     }
     const data = await response.json();
-    console.log('estoy en el servicio');
-    console.log(data);
     return data;
   } catch (error) {
-    throw new Error('Error de conexión');
+    console.error('Error fetching images:', error);
+    throw error;
   }
 };
 
