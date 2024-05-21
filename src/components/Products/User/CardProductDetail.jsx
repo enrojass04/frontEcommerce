@@ -27,6 +27,7 @@ const CardProductDetail = ({ product, images }) => {
       name: product.name_product,
       price: product.price_product,
       quantity: quantity,
+      image: imageUrls[0] // Asignar la primera imagen
     };
     addToCart(newItem);
   };

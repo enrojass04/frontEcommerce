@@ -41,7 +41,7 @@ const ShoppingCart = ({ position, onClose }) => {
       <div className="shopping-cart-body">
         {cartItems.map((item, index) => (
           <div key={index} className="cart-item">
-            <img src={item.image} alt={item.name} />
+            <img src={`data:image/png;base64, ${item.image}`} alt={item.name} />
             <div className="cart-item-details">
               <span>{item.name}</span>
               <span>
