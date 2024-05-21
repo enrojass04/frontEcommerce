@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import "../../../App.css";
 
 const CardProduct = ({ product, images }) => {
-  const imageUrl = images.length > 0 ? images[0].url_image : "default_image_url"; /* A */
+  const imageUrl = images.length > 0 ? images[0].url_image : undefined;
+  //const imageUrl = images.length > 0 ? images[0].url_image : "default_image_url"; /* A */
   return (
     <div className="card">
-      <img src={`data:image/png;base64, ${imageUrl}`} 
-      alt={`Producto ${product.id}`}
-      className="card-img-top rounded mt-2" />
+      {imageUrl && (
+        <img
+          src={`data:image/png;base64, ${imageUrl}`}
+          alt={`Producto ${product.id}`}
+          className="card-img-top rounded mt-2"
+        />
+      )}
       <div className="card-body row">
         <div className="col-12 text-start">
           <h5 className="card-title">{product.name_product}</h5>
