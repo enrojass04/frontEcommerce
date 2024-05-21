@@ -10,7 +10,7 @@ const ProductDetail = () => {
 
   const getProductDetail = async () => {
     try {
-      const data = await getAProductWithImages(id);
+      const data = await getAProduct(id);
       setProduct(data);
     } catch (error) {
       console.error("Error obteniendo el producto:", error);
@@ -29,7 +29,7 @@ const ProductDetail = () => {
       { loading ? (
         <p>Cargando...</p>
       ) : product ? (
-        <CardProductDetail product={product} images={product.images} />
+        <CardProductDetail product={product} />
       ) : (
         <p>Error cargando el producto</p>
       )}
