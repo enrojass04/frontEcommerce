@@ -22,7 +22,7 @@ const ShoppingCart = ({ position, onClose }) => {
       ref={cartRef}
       className="shopping-cart"
       style={{
-        height: "50vh",
+        height: "80vh",
         width: "300px",
         position: "absolute",
       }}
