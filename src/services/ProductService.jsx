@@ -1,5 +1,4 @@
 const API_URL = `${import.meta.env.VITE_API_URL}/products`;
-
 // Obtener productos con sus imágenes asociadas
 export const getProductsWithImages = async (url) => {
   const response = await fetch(url);
@@ -16,8 +15,10 @@ export const getProductsWithImages = async (url) => {
   const imageData = await getimages.json();
 
   // Asociar imágenes a los productos
-  const productsWithImages = data.products.map(product => {
-    const productImages = imageData.images.filter(image => image.id_product === product.id);
+  const productsWithImages = data.products.map((product) => {
+    const productImages = imageData.images.filter(
+      (image) => image.id_product === product.id
+    );
     return {
       ...product,
       images: productImages,
@@ -49,27 +50,24 @@ export const getProductsService = async () => {
   return data;
 };
 
-export const getAProductWithImages = async (id) => {
-  const productResponse = await fetch(`${API_URL}/${id}`);
-  if (!productResponse.ok) {
-    throw new Error("Error de conexión al obtener el producto");
-  }
-  const productData = await productResponse.json();
-
-  const imagesResponse = await fetch(`${import.meta.env.VITE_API_URL}/images`);
-  if (!imagesResponse.ok) {
+// Obtener imágenes de un producto específico
+export const getProductImages = async (productId) => {
+  const productData = await getAProduct(productId);
+  const getimages = await fetch(`${import.meta.env.VITE_API_URL}/images`);
+  if (!getimages.ok) {
     throw new Error("Error de conexión al obtener imágenes");
   }
-  const imageData = await imagesResponse.json();
+  const imageData = await getimages.json();
+  const productImages = imageData.images.filter(
+    (image) => image.id_product === productId
+  );
 
-  const productImages = imageData.images.filter(image => image.id_product === productData.id);
-
-  return {
-    ...productData,
-    images: productImages,
+  const completeProductData = {
+    ...productData, // Spread product details
+    images: productImages, // Add images property
   };
+  return completeProductData;
 };
-
 
 export const getAProduct = async (id) => {
   const response = await fetch(`${API_URL}/${id}`);
@@ -118,4 +116,15 @@ export const deleteProductService = async (productId) => {
     throw new Error("Error eliminando el producto");
   }
   return response.json();
+};
+
+export const getimages = async (productId) => {
+  await fetch(`${import.meta.env.VITE_API_URL1}${productId}`);
+  if (!getimages.ok) {
+    throw new Error("Error de conexión al obtener imágenes");
+  }
+  const imageData = await getimages.json();
+  const productImages = imageData.images.filter(
+    (image) => image.id_product === productId
+  );
 };
