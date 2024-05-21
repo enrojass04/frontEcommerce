@@ -49,6 +49,28 @@ export const getProductsService = async () => {
   return data;
 };
 
+export const getAProductWithImages = async (id) => {
+  const productResponse = await fetch(`${API_URL}/${id}`);
+  if (!productResponse.ok) {
+    throw new Error("Error de conexión al obtener el producto");
+  }
+  const productData = await productResponse.json();
+
+  const imagesResponse = await fetch(`${import.meta.env.VITE_API_URL}/images`);
+  if (!imagesResponse.ok) {
+    throw new Error("Error de conexión al obtener imágenes");
+  }
+  const imageData = await imagesResponse.json();
+
+  const productImages = imageData.images.filter(image => image.id_product === productData.id);
+
+  return {
+    ...productData,
+    images: productImages,
+  };
+};
+
+
 export const getAProduct = async (id) => {
   const response = await fetch(`${API_URL}/${id}`);
   if (!response.ok) {
