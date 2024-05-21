@@ -7,6 +7,7 @@ const CardProductDetail = ({ product, images }) => {
   const isUserLogged = datosUsuario?.user?.id_role === 2;
 
   const imageUrl1 = images.length > 0 ? images[0].url_image : "default_image_url";
+  const imageUrl2 = images.length > 0 ? images[1].url_image : "default_image_url";
 
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext);
@@ -42,11 +43,11 @@ const CardProductDetail = ({ product, images }) => {
         />
 
         
-        {/* <img
+         <img
           src={`data:image/png;base64, ${imageUrl2}`}
           alt={`Producto ${product.id}`}
           className="card-img-top rounded mt-2"
-        /> */}
+        /> 
         <div className="card-body">
           <h3 className="card-title col">{product.name_product}</h3>
           <p className="card-text col">{product.price_product}</p>
