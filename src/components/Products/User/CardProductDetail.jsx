@@ -35,42 +35,13 @@ const CardProductDetail = ({ product, images }) => {
   return (
     <div>
       <div className="card">
-        <div className="d-flex justify-content-end m-2">
+        <div className="d-flex justify-content-star m-2">
           <Link to="/products" className="boton-card">
             Regresar
           </Link>
         </div>
         <div className="row">
-          <div className="col-7">
-            <div className="row ">
-              <div className="col-4">
-                {imageUrls.map(
-                  (imageUrl, index) =>
-                    imageUrl && (
-                      <div className="col m-3" key={index}>
-                        <img
-                          src={`data:image/png;base64, ${imageUrl}`}
-                          alt={`Producto ${product.id}`}
-                          className="tamano-imagen"
-                        />
-                      </div>
-                    )
-                )}
-              </div>
-              <div className="col-8">
-                <div className="m-3">
-                  {imageUrls[0] && (
-                    <img
-                      src={`data:image/png;base64, ${imageUrls[0]}`}
-                      alt={`Producto ${product.id}`}
-                      className="img-fluid"
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col d-flex flex-column align-items-center justify-content-center">
+        <div className="col d-flex flex-column align-items-center justify-content-center">
             <div className="card-body">
               <h3 className="card-title col">{product.name_product}</h3>
               <p className="card-text col">{product.price_product}</p>
@@ -91,6 +62,35 @@ const CardProductDetail = ({ product, images }) => {
               >
                 Add To Cart
               </button>
+            </div>
+          </div>
+          <div className="col-7">
+            <div className="row ">
+            <div className="col-8">
+                <div className="m-3">
+                  {imageUrls[0] && (
+                    <img
+                      src={`data:image/png;base64, ${imageUrls[0]}`}
+                      alt={`Producto ${product.id}`}
+                      className="img-fluid"
+                    />
+                  )}
+                </div>
+              </div>
+              <div className="col-4">
+                {imageUrls.map(
+                  (imageUrl, index) =>
+                    imageUrl && (
+                      <div className="col m-3" key={index}>
+                        <img
+                          src={`data:image/png;base64, ${imageUrl}`}
+                          alt={`Producto ${product.id}`}
+                          className="tamano-imagen"
+                        />
+                      </div>
+                    )
+                )}
+              </div>
             </div>
           </div>
         </div>
