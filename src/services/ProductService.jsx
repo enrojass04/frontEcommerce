@@ -30,6 +30,30 @@ export const getProductsWithImages = async (url) => {
   };
 };
 
+// Obtener un producto con sus imágenes asociadas
+export const getAProductWithImages = async (id) => {
+  const response = await fetch(`${API_URL}/${id}`);
+  if (!response.ok) {
+    throw new Error("Error de conexión");
+  }
+  const product = await response.json();
+
+  // Obtener todas las imágenes
+  const getimages = await fetch(`${import.meta.env.VITE_API_URL}/images`);
+  if (!getimages.ok) {
+    throw new Error("Error de conexión al obtener imágenes");
+  }
+  const imageData = await getimages.json();
+
+  // Asociar imágenes al producto
+  const productImages = imageData.images.filter(image => image.id_product === product.id);
+
+  return {
+    ...product,
+    images: productImages,
+  };
+};
+
 // Usar getProductsWithImages en lugar de fetch directamente
 export const getProductsByCategory = async (categoryId) => {
   return getProductsWithImages(`${API_URL}/category/${categoryId}`);
@@ -50,12 +74,7 @@ export const getProductsService = async () => {
 };
 
 export const getAProduct = async (id) => {
-  const response = await fetch(`${API_URL}/${id}`);
-  if (!response.ok) {
-    throw new Error("Error de conexión");
-  }
-  const data = await response.json();
-  return data;
+  return getAProductWithImages(id);
 };
 
 export const createProductService = async (newProduct) => {

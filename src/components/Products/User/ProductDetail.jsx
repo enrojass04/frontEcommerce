@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import CardProductDetail from "./CardProductDetail";
-import * as getAProduct from '../../../services/ProductService';
+import { getAProductWithImages } from '../../../services/ProductService'; // Ajustar la importación
 import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
-
   const { id } = useParams();
-  const [product, setProduct]  = useState();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const getProductDetail = async () => {
-    const data = await getAProduct.getAProduct(id);
-    setProduct(data.product);
+    try {
+      const data = await getAProductWithImages(id);
+      setProduct(data);
+    } catch (error) {
+      console.error("Error obteniendo el producto:", error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -17,11 +24,15 @@ const ProductDetail = () => {
   }, [id]);
 
   return (
-    <div className="">
+    <div>
       <h2>Detalle del Producto</h2>
-      { product ? (
-        <CardProductDetail product={product} />
-      ): <p>Cargando...</p> }
+      { loading ? (
+        <p>Cargando...</p>
+      ) : product ? (
+        <CardProductDetail product={product} images={product.images} />
+      ) : (
+        <p>Error cargando el producto</p>
+      )}
     </div>
   );
 };
