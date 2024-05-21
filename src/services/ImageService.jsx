@@ -27,6 +27,15 @@ export const getImagesService = async () => {
     return data;
 }
 
+export const getImagesById = async (productId) => {
+  const response = await fetch(`${API_URL}/${productId}`);
+  if (!response.ok) {
+      throw new Error('Error de conexión');
+  }
+  const data = await response.json();
+  return data;
+}
+
 export const getAImagesPages = async (page) => {
     const response = await fetch(`${API_URL}/pages?page=${page}`);
     if (!response.ok) {
