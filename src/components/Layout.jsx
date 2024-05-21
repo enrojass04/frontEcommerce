@@ -18,9 +18,7 @@ export const Layout = ({id_role}) => {
     }
   }, []); */
   
-  const datosUsuario = JSON.parse(localStorage.getItem('dataUserLogin'));
-  console.log(datosUsuario);
-  
+  const datosUsuario = JSON.parse(localStorage.getItem('dataUserLogin'));  
   
 
   return (

@@ -28,13 +28,23 @@ export const getImagesService = async () => {
 }
 
 export const getImagesById = async (productId) => {
-  const response = await fetch(`${API_URL}/${productId}`);
-  if (!response.ok) {
+  try {
+    const response = await fetch(`${API_URL}/${productId}`);
+    if (response.status === 404) {
+      // Devuelve una lista vacía si no se encuentran imágenes
+      return { images: [] };
+    }
+    if (!response.ok) {
       throw new Error('Error de conexión');
+    }
+    const data = await response.json();
+    console.log('estoy en el servicio');
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw new Error('Error de conexión');
   }
-  const data = await response.json();
-  return data;
-}
+};
 
 export const getAImagesPages = async (page) => {
     const response = await fetch(`${API_URL}/pages?page=${page}`);
