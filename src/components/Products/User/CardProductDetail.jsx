@@ -3,13 +3,8 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../Cart/CartContext";
 
 const CardProductDetail = ({ product }) => {
-
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
   const isUserLogged = datosUsuario?.user?.id_role === 2;
-
-  // const imageUrl1 = images.length > 0 ? images[0].url_image : "default_image_url"; /* A */
-  // const imageUrl2 = images.length > 0 ? images[0].url_image : "default_image_url"; /* A */
- 
 
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext);
@@ -41,16 +36,7 @@ const CardProductDetail = ({ product }) => {
         </Link>
       </div>
       <div className="card">
-{/*         <img
-          src={`data:image/png;base64, ${imageUrl1}`}
-          alt={`Producto ${product.id}`}
-          className="card-img-top rounded mt-2"
-        />
-        <img
-          src={`data:image/png;base64, ${imageUrl2}`}
-          alt={`Producto ${product.id}`}
-          className="card-img-top rounded mt-2"
-        /> */}
+        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <h3 className="card-title col">{product.name_product}</h3>
           <p className="card-text col">{product.price_product}</p>
@@ -86,3 +72,5 @@ const CardProductDetail = ({ product }) => {
 };
 
 export default CardProductDetail;
+
+
