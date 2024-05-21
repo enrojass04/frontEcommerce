@@ -1,22 +1,22 @@
-import React from 'react'
+import React from "react";
 
 const FooterMyAccount = () => {
-    return (
-        <div className="banner-call">
-            <div>
-                <h3>Domicilio gratis</h3>
-                <p>For all oders over $50, consectetur adipim scing elit.</p>
-            </div>
-            <div>
-                <h3>Garantia de 90 días</h3>
-                <p>For all oders over $50, consectetur adipim scing elit.</p>
-            </div>
-            <div>
-                <h3>pagos seguros</h3>
-                <p>For all oders over $50, consectetur adipim scing elit.</p>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="banner-call">
+      <div>
+        <h4 className="fw-bold">Domicilio gratis</h4>
+        <p>For all oders over $50, consectetur adipim scing elit.</p>
+      </div>
+      <div>
+        <h4 className="fw-bold">Garantia de 90 días</h4>
+        <p>For all oders over $50, consectetur adipim scing elit.</p>
+      </div>
+      <div>
+        <h4 className="fw-bold">pagos seguros</h4>
+        <p>For all oders over $50, consectetur adipim scing elit.</p>
+      </div>
+    </div>
+  );
+};
 
-export default FooterMyAccount
+export default FooterMyAccount;

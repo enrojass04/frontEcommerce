@@ -23,9 +23,9 @@ const Login = () => {
     if (resp.ok) {
       const result = await resp.json();
       localStorage.setItem("dataUserLogin", JSON.stringify(result));
-      setMessage(`Bienvenido`); 
+      setMessage(`Bienvenido`);
       setTimeout(() => {
-        setMessage(""); 
+        setMessage("");
         navigate("/");
         window.location.reload();
       }, 2000);

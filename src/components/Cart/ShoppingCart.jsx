@@ -1,10 +1,17 @@
 import React, { useContext, useMemo, useEffect, useRef } from "react";
 import { CartContext } from "../Cart/CartContext";
 import "../styles/ShoppingCart.css";
+import { useNavigate } from "react-router-dom";
 
 const ShoppingCart = ({ position, onClose }) => {
   const { cartItems, clearCart } = useContext(CartContext);
   const cartRef = useRef(null);
+  const navigate = useNavigate();
+
+  // *uso de redirección con navigate
+  const HandleCheckout = () => {
+    navigate("/checkout");
+  };
 
   useEffect(() => {
     if (cartRef.current) {
@@ -37,7 +44,9 @@ const ShoppingCart = ({ position, onClose }) => {
             <img src={item.image} alt={item.name} />
             <div className="cart-item-details">
               <span>{item.name}</span>
-              <span>{item.price} x {item.quantity}</span>
+              <span>
+                {item.price} x {item.quantity}
+              </span>
             </div>
           </div>
         ))}
@@ -47,13 +56,10 @@ const ShoppingCart = ({ position, onClose }) => {
       </div>
       <div className="shopping-cart-footer">
         <button onClick={clearCart}>Vaciar Carrito</button>
-        <button onClick={onClose}>Checkout</button>
+        <button onClick={HandleCheckout}>Checkout</button>
       </div>
     </div>
   );
 };
 
 export default ShoppingCart;
-
-
-

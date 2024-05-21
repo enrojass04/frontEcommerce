@@ -8,12 +8,13 @@ import { Contact } from "./pages/Contact";
 import { MyAccount } from "./pages/MyAccount";
 import { Carrito } from "./pages/Carrito";
 import { Products } from "./pages/Products";
+import { Checkout } from "./pages/Checkout";
 import ProductListManage from "./components/Products/Admin/ProductListManage";
 import ListManageUser from "./components/Users/Admin/ListManageUser";
 import ListManageCategory from "./components/Categories/Admin/ListManageCategory";
 import HomeAdmin from "./pages/Admin/HomeAdmin";
 import ProductDetail from "./components/Products/User/ProductDetail";
-import ListManageImage from "./components/Images/Admin/ListManageImage"
+import ListManageImage from "./components/Images/Admin/ListManageImage";
 
 const AdminRoutes = () => (
   <Routes>
@@ -34,8 +35,9 @@ const UserRoutes = () => (
       <Route path="contact" element={<Contact />} />
       <Route path="login" element={<MyAccount />} />
       <Route path="carrito" element={<Carrito />} />
+      <Route path="checkout" element={<Checkout />} />
       <Route path="products" element={<Products />} />
-      <Route path="products/:id" element={<ProductDetail />} />       
+      <Route path="products/:id" element={<ProductDetail />} />
     </Route>
   </Routes>
 );
@@ -47,7 +49,15 @@ function App() {
   return (
     <div className="container-fluid h-100">
       <BrowserRouter>
-        {datosUsuario ? (isAdmin ? <AdminRoutes /> : <UserRoutes />) : <UserRoutes />}
+        {datosUsuario ? (
+          isAdmin ? (
+            <AdminRoutes />
+          ) : (
+            <UserRoutes />
+          )
+        ) : (
+          <UserRoutes />
+        )}
       </BrowserRouter>
     </div>
   );
