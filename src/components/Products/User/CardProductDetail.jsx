@@ -7,7 +7,7 @@ const CardProductDetail = ({ product, images }) => {
   const isUserLogged = datosUsuario?.user?.id_role === 2;
 
   const imageUrls = [];
-  for (let i = 0; i < images.length; i++) {
+  for (let i = 0; i < 3; i++) {
     const imageUrl = images.length > i ? images[i].url_image : undefined;
     imageUrls.push(imageUrl);
   }
@@ -27,54 +27,65 @@ const CardProductDetail = ({ product, images }) => {
       name: product.name_product,
       price: product.price_product,
       quantity: quantity,
-      image: imageUrls[0] // Asignar la primera imagen
+      image: imageUrls[0], // Asignar la primera imagen
     };
     addToCart(newItem);
   };
 
   return (
     <div>
-      <div>
-        <Link to="/products" className="btn btn-primary">
-          Regresar
-        </Link>
-      </div>
       <div className="card">
-        <div className="row">
-          {imageUrls.map(
-            (imageUrl, index) =>
-              imageUrl && (
-                <div className="col" key={index}>
-                  <img
-                    src={`data:image/png;base64, ${imageUrl}`}
-                    alt={`Producto ${product.id}`}
-                    className="card-img-top rounded mt-2"
-                  />
-                </div>
-              )
-          )}
+        <div className="d-flex justify-content-end m-2">
+          <Link to="/products" className="boton-card">
+            Regresar
+          </Link>
         </div>
-        <div className="card-body">
-          <h3 className="card-title col">{product.name_product}</h3>
-          <p className="card-text col">{product.price_product}</p>
-          <p className="card-text col">{product.description}</p>
-          <div>
-            <div className="quantity-selector">
-              <button
-                onClick={handleDecrement}
-                className="btn btn-secondary mx-2"
-              >
+        <div className="row">
+          <div className="col-7">
+            <div className="row ">
+              <div className="col-4">
+                {imageUrls.map(
+                  (imageUrl, index) =>
+                    imageUrl && (
+                      <div className="col m-3" key={index}>
+                        <img
+                          src={`data:image/png;base64, ${imageUrl}`}
+                          alt={`Producto ${product.id}`}
+                          className="tamano-imagen"
+                        />
+                      </div>
+                    )
+                )}
+              </div>
+              <div className="col-8">
+                <div className="m-3">
+                  {imageUrls[0] && (
+                    <img
+                      src={`data:image/png;base64, ${imageUrls[0]}`}
+                      alt={`Producto ${product.id}`}
+                      className="img-fluid"
+                    />
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col d-flex flex-column align-items-center justify-content-center">
+            <div className="card-body">
+              <h3 className="card-title col">{product.name_product}</h3>
+              <p className="card-text col">{product.price_product}</p>
+              <p className="card-text col">{product.description}</p>
+            </div>
+            <div className="quantity-selector mb-3">
+              <button onClick={handleDecrement} className="boton-card mx-2">
                 -
               </button>
               <span className="quantity">{quantity}</span>
-              <button
-                onClick={handleIncrement}
-                className="btn btn-secondary mx-2"
-              >
+              <button onClick={handleIncrement} className="boton-card mx-2">
                 +
               </button>
               <button
-                className="btn btn-primary"
+                className="boton-card mx-3"
                 disabled={!isUserLogged}
                 onClick={handleAddToCart}
               >

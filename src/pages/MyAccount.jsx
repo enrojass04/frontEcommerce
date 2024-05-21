@@ -6,10 +6,10 @@ import FooterMyAccount from "../components/Footers/FooterMyAccount";
 import HeaderMyaccount from "../components/Headers/HeaderMyaccount";
 import Profile from "../components/Profile";
 import { useNavigate } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 
 export const MyAccount = () => {
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
-  // const user = datosUsuario.user;
   const navigate = useNavigate();
   const logout = () => {
     localStorage.clear();
@@ -25,7 +25,7 @@ export const MyAccount = () => {
 
       {datosUsuario && (
         <div>
-          <button className="btn btn-primary" onClick={logout}>Cerrrar Sesión</button>
+          <Button variant="danger" className="logout-btn" onClick={logout}>Cerrar Sesión</Button>
           <section className="login-register">
             <Profile user={datosUsuario.user}/>
           </section>
