@@ -15,11 +15,12 @@ import ListManageCategory from "./components/Categories/Admin/ListManageCategory
 import HomeAdmin from "./pages/Admin/HomeAdmin";
 import ProductDetail from "./components/Products/User/ProductDetail";
 import ListManageImage from "./components/Images/Admin/ListManageImage";
-import { CartProvider } from "./components/Cart/CartContext";
+import MyAccountAdmin from "./pages/Admin/MyAccountAdmin";
 
 const AdminRoutes = () => (
   <Routes>
     <Route path="/" element={<HomeAdmin />}>
+      <Route path="/" element={<MyAccountAdmin />} />
       <Route path="product" element={<ProductListManage />} />
       <Route path="user" element={<ListManageUser />} />
       <Route path="category" element={<ListManageCategory />} />
@@ -49,17 +50,17 @@ function App() {
 
   return (
     <div className="container-fluid h-100">
-      <BrowserRouter>
-        {datosUsuario ? (
-          isAdmin ? (
-            <AdminRoutes />
+        <BrowserRouter>
+          {datosUsuario ? (
+            isAdmin ? (
+              <AdminRoutes />
+            ) : (
+              <UserRoutes />
+            )
           ) : (
             <UserRoutes />
-          )
-        ) : (
-          <UserRoutes />
-        )}
-      </BrowserRouter>
+          )}
+        </BrowserRouter>
     </div>
   );
 }

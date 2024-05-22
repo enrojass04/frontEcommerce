@@ -19,10 +19,9 @@ const HomeAdmin = () => {
             <img src={imagenes.logoSinFond} alt="logo-ecommerce" />
             <h1>EMA Shop</h1>
           </div>
-          {/* <ImExit  size={24} color="#000" className="icon-logout" onClick={logout}/> */}
           <NavBarAdmin />
         </div>
-        <div className="col-9">
+        <div className="col-9">  
           <div className="d-flex flex-column mt-5">
             <Outlet />
           </div>
