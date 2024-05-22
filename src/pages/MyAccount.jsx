@@ -1,10 +1,10 @@
 import React from "react";
 import "../App.css";
-import Login from "../components/Login";
-import Register from "../components/Register";
+import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
 import FooterMyAccount from "../components/Footers/FooterMyAccount";
 import HeaderMyaccount from "../components/Headers/HeaderMyaccount";
-import Profile from "../components/Profile";
+import Profile from "../components/Profile/Profile";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { IoLogInOutline } from "react-icons/io5";
