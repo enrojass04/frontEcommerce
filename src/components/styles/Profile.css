@@ -1,0 +1,100 @@
+/* *estilos contenedor perfil */
+.account-profile{
+    width: 300px;
+    height: 500px;
+    padding: 25px;
+    box-shadow: 0px 6px 11px 0px #38383830;
+    border-radius: 15px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    img{
+        width: 200px;
+        height: 200px;
+        border-radius: 40px;
+        box-shadow: 1px 13px 15px 0px #0000002e;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    img:hover{
+        transform: translateY(-10px);
+    }
+    .balance-tag{
+        width: 170px;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        background-color: #F9F1E7;
+        text-align: center;
+        border-radius: 50px;
+        gap: 5px;
+
+        span{
+            font-size: 14px;
+        }
+    }
+
+    .section-info{
+        margin-top: 20px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        
+        div{
+            gap: 5px;
+        }
+    }
+}
+
+/* *estilos contenedor perfil */
+
+/* estilos informacion adicional */
+.column-info{
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+}
+.container-info{
+    width: 400px;
+    height: 240px;
+    padding: 15px;
+    box-shadow: 0px 6px 11px 0px #38383830;
+    border-radius: 15px;
+    background-color: #fff;
+
+    div span{
+        color: #9F9F9F;
+    };
+}
+
+/* estilos informacion adicional */
+
+/* estilos para informacion de pago */
+.payment{
+    width: 400px;
+    height: 500px;
+    padding: 15px;
+    box-shadow: 0px 6px 11px 0px #38383830;
+    border-radius: 15px;
+    background-color: #fff;
+
+    img{
+        margin-bottom: 15px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    img:hover{
+        transform: translateY(-10px);
+    }
+
+    div span{
+        color: #9F9F9F;
+        
+    };
+}
+
+/* estilos para informacion de pago */

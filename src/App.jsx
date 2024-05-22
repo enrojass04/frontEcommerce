@@ -49,19 +49,17 @@ function App() {
 
   return (
     <div className="container-fluid h-100">
-      <CartProvider>
-        <BrowserRouter>
-          {datosUsuario ? (
-            isAdmin ? (
-              <AdminRoutes />
-            ) : (
-              <UserRoutes />
-            )
+      <BrowserRouter>
+        {datosUsuario ? (
+          isAdmin ? (
+            <AdminRoutes />
           ) : (
             <UserRoutes />
-          )}
-        </BrowserRouter>
-      </CartProvider>
+          )
+        ) : (
+          <UserRoutes />
+        )}
+      </BrowserRouter>
     </div>
   );
 }

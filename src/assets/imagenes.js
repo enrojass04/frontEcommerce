@@ -1,6 +1,10 @@
 import image1 from './img/image 1.png'
 import logo from './logo/Meubel House_Logos-05.png'
 import fondo from './img/scandinavian-interior-mockup-wall-decal-background 1.png'
+import avatar from './img/avatar foto.jpg'
+import logoEma from './img/logoEMA.jpg'
+import logoSinFond from './img/logo-removebg.png'
+import creditCard from './img/CreditCard.png'
 import imagenProducto1 from '../assets/img/producto1.jpg';
 import imagenProducto2 from '../assets/img/producto2.jpg';
 import imagenProducto3 from '../assets/img/producto3.jpg';
@@ -16,11 +20,14 @@ import imagenProducto12 from '../assets/img/producto12.jpg';
 import imagenProducto13 from '../assets/img/producto13.jpg';
 import imagenProducto14 from '../assets/img/producto14.jpg';
 
-
 export default {
     "img1": image1,
     "logo": logo,
     "banner": fondo,
+    "avatar": avatar,
+    "logoEMA": logoEma,
+    "logoSinFond": logoSinFond,
+    "creditCard": creditCard,
     "imgpro1":imagenProducto1,
     "imgpro2":imagenProducto2,
     "imgpro3":imagenProducto3,

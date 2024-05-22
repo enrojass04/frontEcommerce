@@ -1,10 +1,14 @@
 #root {
-  max-width: 85%;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   font-family: 'Poppins';
 }
+
+/* .container-fluid{
+  
+} */
 
 /* *header */
 header {
@@ -19,6 +23,18 @@ header {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    
+    img{
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+    }
+  }
+}
+
+.logo-header-admin{
+  img{
+    width: 80px;
   }
 }
 
@@ -160,6 +176,10 @@ nav ul li a {
   width: 100%;
   height: 30vh;
 
+  div img{
+    width: 50px;
+  }
+
   div div{
     gap: 5px;
   }
@@ -177,7 +197,7 @@ nav ul li a {
 .login-register{
   display: flex;
   justify-content: space-evenly;
-  margin: 3rem;
+  margin: 2rem;
   gap: 20px;
 
 
@@ -185,7 +205,6 @@ nav ul li a {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
   }
   
   
@@ -349,18 +368,18 @@ nav ul li a {
 
 .boton-card {
   margin-top: 3px;
-  padding: 5px 20px;
-  background-color: #fff;
-  color: #000;
-  border: 2px solid #000;
-  border-radius: 15px;
-  cursor: pointer;
-  text-decoration: none;    
+  padding: 5px 20px !important;
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 2px solid #000 !important;
+  border-radius: 15px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;    
 }
 
 .boton-card:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: #000 !important;
+  color: #fff !important;
 }
 
 .boton-card:disabled {
@@ -537,9 +556,7 @@ nav ul li a {
 
 /* Profile CSS */
 .user-profile {
-  border: 1px solid #dbdbdb;
   padding: 20px;
-  background-color: #fff;
   border-radius: 10px;
 }
 
