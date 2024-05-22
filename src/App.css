@@ -363,6 +363,10 @@ nav ul li a {
   color: #fff;
 }
 
+.boton-card:disabled {
+  opacity: 0.3;
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
   .card-body {

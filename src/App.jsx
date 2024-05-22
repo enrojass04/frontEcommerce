@@ -15,6 +15,7 @@ import ListManageCategory from "./components/Categories/Admin/ListManageCategory
 import HomeAdmin from "./pages/Admin/HomeAdmin";
 import ProductDetail from "./components/Products/User/ProductDetail";
 import ListManageImage from "./components/Images/Admin/ListManageImage";
+import { CartProvider } from "./components/Cart/CartContext";
 
 const AdminRoutes = () => (
   <Routes>
@@ -48,17 +49,19 @@ function App() {
 
   return (
     <div className="container-fluid h-100">
-      <BrowserRouter>
-        {datosUsuario ? (
-          isAdmin ? (
-            <AdminRoutes />
+      <CartProvider>
+        <BrowserRouter>
+          {datosUsuario ? (
+            isAdmin ? (
+              <AdminRoutes />
+            ) : (
+              <UserRoutes />
+            )
           ) : (
             <UserRoutes />
-          )
-        ) : (
-          <UserRoutes />
-        )}
-      </BrowserRouter>
+          )}
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }

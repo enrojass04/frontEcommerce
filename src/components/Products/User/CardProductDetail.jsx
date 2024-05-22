@@ -41,18 +41,26 @@ const CardProductDetail = ({ product, images }) => {
           </Link>
         </div>
         <div className="row">
-        <div className="col d-flex flex-column align-items-center justify-content-center">
+          <div className="col d-flex flex-column align-items-center justify-content-center">
             <div className="card-body">
               <h3 className="card-title col">{product.name_product}</h3>
               <p className="card-text col">{product.price_product}</p>
               <p className="card-text col">{product.description}</p>
             </div>
             <div className="quantity-selector mb-3">
-              <button onClick={handleDecrement} className="boton-card mx-3">
+              <button
+                onClick={handleDecrement}
+                className="boton-card mx-3"
+                disabled={!isUserLogged}
+              >
                 -
               </button>
               <span className="quantity">{quantity}</span>
-              <button onClick={handleIncrement} className="boton-card mx-3">
+              <button
+                onClick={handleIncrement}
+                className="boton-card mx-3"
+                disabled={!isUserLogged}
+              >
                 +
               </button>
               <button
@@ -66,7 +74,7 @@ const CardProductDetail = ({ product, images }) => {
           </div>
           <div className="col-7">
             <div className="row ">
-            <div className="col-8">
+              <div className="col-8">
                 <div className="m-3">
                   {imageUrls[0] && (
                     <img

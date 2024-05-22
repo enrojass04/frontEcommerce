@@ -24,22 +24,22 @@ const NavBarAdmin = () => {
           </li>
           <li className="my-3">
             <Link to="user" className="text-dark text-decoration-none">
-              User
+              Usuarios
             </Link>
           </li>
           <li className="my-3">
             <Link to="category" className="text-dark text-decoration-none">
-              Category
+              Categorías
             </Link>
           </li>
           <li className="my-3">
             <Link to="product" className="text-dark text-decoration-none">
-              Product
+              Productos
             </Link>
           </li>
           <li className="my-3">
             <Link to="image" className="text-dark text-decoration-none">
-              Image
+              Imágenes
             </Link>
           </li>
         </ul>

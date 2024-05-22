@@ -47,7 +47,7 @@ const ListManageImage = () => {
         handleCloseSave={() => setShowSave(false)}
         onSave={handleSaveNewImage}
       />
-      <h1>Imagenes</h1>
+      <h1>Imágenes</h1>
       <div className="d-flex flex-column mt-5">
         {images?.map((image) => (
           <div key={image.id} className="mb-4">

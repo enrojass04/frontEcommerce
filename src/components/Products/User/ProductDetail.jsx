@@ -12,6 +12,7 @@ const ProductDetail = () => {
   const [error, setError] = useState(null);
   const [noImagesMessage, setNoImagesMessage] = useState("");
 
+
   const getProductDetail = async () => {
     try {
       const dataProduct = await getAProduct.getAProduct(id);
