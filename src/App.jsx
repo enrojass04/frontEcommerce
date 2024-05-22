@@ -5,7 +5,7 @@ import { Layout } from "./components/Layout";
 import About from "./pages/About";
 import { HomeUser } from "./pages/User/HomeUser";
 import { Contact } from "./pages/Contact";
-import { MyAccount } from "./pages/MyAccount";
+import { MyAccount } from "./pages/User/MyAccount";
 import { Carrito } from "./pages/Carrito";
 import { Products } from "./pages/Products";
 import { Checkout } from "./pages/Checkout";
