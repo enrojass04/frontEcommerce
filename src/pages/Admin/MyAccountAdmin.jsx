@@ -2,7 +2,7 @@ import React from 'react';
 import { IoLogInOutline } from "react-icons/io5";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import ProfileAdmin from '../../components/ProfileAdmin';
+import ProfileAdmin from '../../components/Profile/ProfileAdmin';
 
 const MyAccountAdmin = () => {
     
