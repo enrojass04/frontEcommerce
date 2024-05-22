@@ -12,7 +12,7 @@ export const CardManageImage = ({ image }) => {
             style={{ width: "100px", height: "100px" }}
           />
           <h4 className="col card-title mx-1">{image.id}</h4>
-          <p className="col card-text mx-1">{image.url_image}</p>
+          <p className="col card-text mx-1 overflow-auto">{image.url_image}</p>
         </div>
       </div>
       <div className="col-2 d-flex align-items-center">
