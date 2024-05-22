@@ -3,25 +3,9 @@ import { Button, Modal, Form, Alert } from "react-bootstrap";
 import * as imageService from "../../../services/ImageService";
 
 const ModalSave = ({ showSave, handleCloseSave, onSave }) => {
-  // const [newImage, setNewImage] = useState({ url_image: "" });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const [imagenBase64, setImagenBase64] = useState("");
-/* 
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      try {
-        const response = await imageService.uploadImage(formData);
-        setNewImage({ url_image: response.url_image });
-      } catch (error) {
-        console.error("Error uploading image:", error);
-      }
-    }
-  }; */
 
   const handleSaveChanges = async () => {
     const imageToSave = { ...imagenBase64 };
