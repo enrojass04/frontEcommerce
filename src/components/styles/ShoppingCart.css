@@ -56,3 +56,23 @@
   }
 }
 
+/* src/styles/ShoppingCart.css */
+.cart-item-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.cart-item-actions button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.cart-item-actions button:hover {
+  background-color: #0056b3;
+}
