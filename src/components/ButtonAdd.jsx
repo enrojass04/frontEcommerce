@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { FaPlus } from 'react-icons/fa';
 
 const ButtonAdd = ({onClick}) => {
   return (
-    <div className="d-flex justify-content-end">
-        <button onClick={onClick} className="btn btn-success me-5 mb-3">Add New</button>
+    <div>
+        <FaPlus onClick={onClick} className='icon-add '/> 
     </div>
   )
 }

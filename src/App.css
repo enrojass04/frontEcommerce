@@ -566,3 +566,52 @@ nav ul li a {
   width: 90px;
   height: 90px;
 }
+
+.icon-edit {
+  font-size: 28px; 
+  color: rgb(208, 208, 17); 
+}
+
+.icon-delete {
+  font-size: 28px; 
+  color: rgba(238, 45, 45, 0.699); 
+}
+
+/* ButtonAdd.css */
+.icon-add {
+  color: white;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 10px solid #000; 
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* .icon-add:hover {
+  background-color: #f0f0f0; 
+  border-color: #4e8f4c; 
+} */
+
+/* ButtonLogout.css */
+.icon-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;  
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.icon-logout:hover {
+  background-color: #f0f0f0; 
+  border-color: #007bff; 
+}
+
+
+

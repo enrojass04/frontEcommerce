@@ -1,18 +1,26 @@
-import React from 'react'
+import React from "react";
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 export const CardManageCategory = ({ category }) => {
-    return (
-        <div className='row'>
-            <div className="col-10 card-category ">
-                <div className="card-body  d-flex flex-row align-items-center">
-                    <h4 className="col card-title mx-1">{category.id}</h4>
-                    <p className="col card-text mx-1">{category.name_category}</p>
-                </div>
-            </div>
-            <div className='col-2 d-flex align-items-center'>
-                <a href="#" className="btn btn-warning mx-1">Edit</a>
-                <a href="#" className="btn btn-danger">Delete</a>
-            </div>
-        </div >
-    )
-}
+  return (
+    <div className="row">
+      <div className="col-10 card-category ">
+        <div className="card-body  d-flex flex-row align-items-center">
+          <h4 className="col card-title mx-1">{category.id}</h4>
+          <p className="col card-text mx-1">{category.name_category}</p>
+        </div>
+      </div>
+      <div className="col-2 d-flex align-items-center">
+        <FaEdit
+          className="icon-edit"
+          style={{ cursor: "pointer", marginRight: "10px" }}
+          /* onClick={onEditClick} */
+        />
+        <FaTrash className="icon-delete" 
+          style={{ cursor: "pointer" }}
+          /* onClick={onDeleteClick} */
+        />
+      </div>
+    </div>
+  );
+};

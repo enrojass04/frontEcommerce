@@ -17,10 +17,10 @@ const ListManageUser = () => {
   }, []);
 
 return (
-  <div>
+  <div className="container-fluid mt-10" >
     <ButtonAdd/>
-
-    <div className="d-flex flex-column mt-3">
+    <h1>Usuarios</h1>
+    <div className="d-flex flex-column mt-5">
       {users?.map((user) => (
         <div key={user.id} className="mb-4">
           <CardManageUser key={user.id} user={user} />

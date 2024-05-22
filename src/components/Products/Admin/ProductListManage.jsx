@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CardManageProduct } from "./CardManageProduct";
+import { FaPlus } from "react-icons/fa";
 import * as productService from "../../../services/ProductService";
 import ButtonAdd from "../../ButtonAdd";
 import ModalSave from "./ModalSave";
@@ -87,6 +88,9 @@ const ProductListManage = () => {
 
   return (
     <div>
+      {/*       <div className="">
+        <FaPlus onClick={() => setShowSave(true)} className='icon-add'/> 
+      </div> */}
       <ButtonAdd onClick={() => setShowSave(true)} />
       <ModalSave
         showSave={showSave}
@@ -111,8 +115,8 @@ const ProductListManage = () => {
           {successMessage}
         </div>
       )}
-
-      <div className="d-flex flex-column mt-3">
+      <h1>Productos</h1>
+      <div className="d-flex flex-column mt-5">
         {products?.map((product) => (
           <div key={product.id} className="mb-4">
             <CardManageProduct
@@ -134,7 +138,9 @@ const ProductListManage = () => {
           </li>
           {Array.from({ length: totalPages }, (_, index) => (
             <li
-              className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+              className={`page-item ${
+                currentPage === index + 1 ? "active" : ""
+              }`}
               key={index + 1}
             >
               <a
@@ -150,7 +156,9 @@ const ProductListManage = () => {
             </li>
           ))}
           <li
-            className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
+            className={`page-item ${
+              currentPage === totalPages ? "disabled" : ""
+            }`}
           >
             <a className="page-link" href="#" onClick={handleNext}>
               Next
@@ -163,8 +171,3 @@ const ProductListManage = () => {
 };
 
 export default ProductListManage;
-
-
-
-
-

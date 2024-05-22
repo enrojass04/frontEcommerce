@@ -19,7 +19,8 @@ const ListManageCategory = () => {
 return (
   <div>
     <ButtonAdd/>
-    <div className="d-flex flex-column mt-3">
+    <h1>Categorías</h1>
+    <div className="d-flex flex-column mt-5">
       {categories?.map((category) => (
         <div key={category.id} className="mb-4">
           <CardManageCategory key={category.id} category={category} />

@@ -7,7 +7,7 @@ import ModalSave from "./ModalSave";
 const ListManageImage = () => {
   const [images, setImages] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1); 
+  const [currentPage, setCurrentPage] = useState(1);
   const [showSave, setShowSave] = useState(false);
 
   const getImages = async (page) => {
@@ -47,8 +47,8 @@ const ListManageImage = () => {
         handleCloseSave={() => setShowSave(false)}
         onSave={handleSaveNewImage}
       />
-
-      <div className="d-flex flex-column mt-3">
+      <h1>Imagenes</h1>
+      <div className="d-flex flex-column mt-5">
         {images?.map((image) => (
           <div key={image.id} className="mb-4">
             <CardManageImage key={image.id} image={image} />

@@ -6,7 +6,7 @@ export const Footer = () => {
     <footer>
       <div className="columnas">
         <div className="columna">
-          <h3>E-maª Store</h3>
+          <h3>EMA Store</h3>
         </div>
         <div className="columna">
           <span>Links</span>

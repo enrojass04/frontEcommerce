@@ -15,10 +15,8 @@ export const HomeUser = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
             tellus, luctus nec ullamcorper mattis.
           </p>
-        </div>
-             
-      </section>
-      
+        </div>             
+      </section>      
     </>
   );
 };

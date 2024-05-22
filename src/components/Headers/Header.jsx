@@ -33,7 +33,7 @@ export const Header = () => {
     <header>
       <div className="logo-header">
         <img src={imagenes.logo} alt="logo-ecommerce" />
-        <h3>E-maª Store</h3>
+        <h3>EMA Store</h3>
       </div>
       <NavBarUser />
       <nav>
