@@ -8,18 +8,18 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i.name === item.name);
+      const existingItem = prevItems.find((i) => i.id === item.id);
       if (existingItem) {
         return prevItems.map((i) =>
-          i.name === item.name ? { ...i, quantity: i.quantity + item.quantity } : i
+          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
         );
       }
       return [...prevItems, item];
     });
   };
 
-  const removeFromCart = (name) => {
-    setCartItems((prevItems) => prevItems.filter((i) => i.name !== name));
+  const removeFromCart = (id) => {
+    setCartItems((prevItems) => prevItems.filter((i) => i.id !== id));
   };
 
   const clearCart = () => {
@@ -32,4 +32,3 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
-

@@ -1,3 +1,4 @@
+// src/components/ShoppingCart.jsx
 import React, { useContext, useMemo, useEffect, useRef } from "react";
 import { CartContext } from "../Cart/CartContext";
 import "../styles/ShoppingCart.css";
@@ -8,9 +9,8 @@ const ShoppingCart = ({ position, onClose }) => {
   const cartRef = useRef(null);
   const navigate = useNavigate();
 
-  // *uso de redirección con navigate
-  const HandleCheckout = () => {
-    navigate("/checkout");
+  const handleCheckout = () => {
+    navigate("/checkout", { state: { cartItems } });
   };
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const ShoppingCart = ({ position, onClose }) => {
         <button onClick={clearCart} className="boton-card">
           Vaciar Carrito
         </button>
-        <button onClick={HandleCheckout} className="boton-card">
+        <button onClick={handleCheckout} className="boton-card">
           Checkout
         </button>
       </div>
@@ -67,3 +67,4 @@ const ShoppingCart = ({ position, onClose }) => {
 };
 
 export default ShoppingCart;
+

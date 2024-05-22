@@ -1,15 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import FooterMyAccount from "../components/Footers/FooterMyAccount";
-//assets
 import imagenes from "../assets/imagenes";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { createOrderService } from "../services/OrderService";
 
 export const Checkout = () => {
+  const { state } = useLocation();
+  const { cartItems } = state || { cartItems: [] };
+  const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    companyName: "",
+    country: "",
+    address: "",
+    state: "",
+    city: "",
+    zipCode: "",
+    phoneNumber: "",
+    email: ""
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const orderData = {
+      id_user: 2, // Replace with actual user ID
+      products: cartItems.map((item) => ({
+        id_product: item.id,
+        quantity: item.quantity,
+      })),
+      total_price: total,
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      company_name: formData.companyName,
+      country: formData.country,
+      address: formData.address,
+      state: formData.state,
+      city: formData.city,
+      zip_code: formData.zipCode,
+      phone_number: formData.phoneNumber,
+      email: formData.email,
+    };
+
+    try {
+      const createdOrder = await createOrderService(orderData);
+      console.log("Order created successfully:", createdOrder);
+    } catch (error) {
+      console.error("Error creating order:", error.message);
+    }
+  };
+
   return (
     <div>
       <section className="banner-page d-flex align-items-center justify-content-center">
         <div>
-          <img src={imagenes.logoSinFond} alt="logo ecoommerce" />
+          <img src={imagenes.logoSinFond} alt="logo ecommerce" />
           <h1>Checkout</h1>
           <div className="d-flex justify-content-center">
             <Link to="/">Home </Link> /<p> Checkout</p>
@@ -20,41 +74,52 @@ export const Checkout = () => {
         <div className="col-md-6">
           <div className="form-section">
             <h1 className="h3 text-start">Checkout</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="d-flex justify-content-between">
                 <div className="form-group col-md-5 text-start mb-4">
-                  <label for="firstName">Nombres</label>
+                  <label htmlFor="firstName">Nombres</label>
                   <input
                     type="text"
                     className="form-control"
                     id="firstName"
-                  ></input>
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="form-group col-md-5 text-start mb-2">
-                  <label for="lastName">Apellidos</label>
+                  <label htmlFor="lastName">Apellidos</label>
                   <input
                     type="text"
                     className="form-control"
                     id="lastName"
-                  ></input>
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
               </div>
               <div className="form-group">
-                <label for="address">Nombre de la Empresa (Opcional)</label>
+                <label htmlFor="companyName">Nombre de la Empresa (Opcional)</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="Company"
+                  id="companyName"
+                  value={formData.companyName}
+                  onChange={handleChange}
                   placeholder="Nombre de la empresa"
-                ></input>
+                />
               </div>
               <div className="form-group col-md-12">
-                <label for="country">País</label>
+                <label htmlFor="country">País</label>
                 <select
                   id="country"
                   className="form-control custom-select-icon"
+                  value={formData.country}
+                  onChange={handleChange}
+                  required
                 >
-                  <option selected>Elige un país...</option>
+                  <option value="" disabled>Elige un país...</option>
                   <option value="us">United States</option>
                   <option value="ca">Canada</option>
                   <option value="mx">Mexico</option>
@@ -63,20 +128,26 @@ export const Checkout = () => {
                 </select>
               </div>
               <div className="form-group">
-                <label for="address">Dirección</label>
+                <label htmlFor="address">Dirección</label>
                 <input
                   type="text"
                   className="form-control"
                   id="address"
-                ></input>
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="form-group col-md-12">
-                <label for="country">Departamento</label>
+                <label htmlFor="state">Departamento</label>
                 <select
-                  id="country"
+                  id="state"
                   className="form-control custom-select-icon"
+                  value={formData.state}
+                  onChange={handleChange}
+                  required
                 >
-                  <option selected>Elige un Departamento...</option>
+                  <option value="" disabled>Elige un Departamento...</option>
                   <option value="cun">Cundinamarca</option>
                   <option value="boj">Boyaca</option>
                   <option value="ant">Antioquia</option>
@@ -85,34 +156,51 @@ export const Checkout = () => {
                 </select>
               </div>
               <div className="form-group col-md-12">
-                <label for="city">Ciudad</label>
+                <label htmlFor="city">Ciudad</label>
                 <input
                   type="text"
                   className="form-control"
                   id="city"
+                  value={formData.city}
+                  onChange={handleChange}
                   placeholder="Eje. New York"
-                ></input>
+                  required
+                />
               </div>
               <div className="form-group col-md-12">
-                <label for="zipCode">Zip Code</label>
+                <label htmlFor="zipCode">Zip Code</label>
                 <input
                   type="text"
                   className="form-control"
                   id="zipCode"
-                ></input>
+                  value={formData.zipCode}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="form-group">
-                <label for="phone">Telofono / Celular</label>
+                <label htmlFor="phoneNumber">Teléfono / Celular</label>
                 <input
                   type="number"
                   className="form-control"
-                  id="phone"
-                ></input>
+                  id="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="form-group">
-                <label for="email">Email</label>
-                <input type="email" className="form-control" id="email"></input>
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
+              <button type="submit" className="boton-card mt-4">Finalizar Compra</button>
             </form>
           </div>
         </div>
@@ -122,24 +210,19 @@ export const Checkout = () => {
               <span className="fw-bold fs-5">Producto</span>
               <span className="fw-bold fs-5">Subtotal</span>
             </div>
-            <div className="d-flex justify-content-between">
-              <div className="d-flex gap-2">
-                <span>Iphone Xr</span>
-                <p>x1</p>
+            {cartItems.map((item, index) => (
+              <div key={index} className="d-flex justify-content-between">
+                <div className="d-flex gap-2">
+                  <span>{item.name}</span>
+                  <p>x{item.quantity}</p>
+                </div>
+                <span>${(item.price * item.quantity).toFixed(2)}</span>
               </div>
-              <span>$909.00</span>
-            </div>
-            <div className="d-flex justify-content-between">
-              <div className="d-flex gap-2">
-                <span>Iphone 15 Pro</span>
-                <p>x2</p>
-              </div>
-              <span>$1005.00</span>
-            </div>
-            <hr></hr>
+            ))}
+            <hr />
             <div className="d-flex justify-content-between font-weight-bold">
               <span className="fw-bold fs-4">Total</span>
-              <span className="fs-4 fw-semibold color-total">$104.00</span>
+              <span className="fs-4 fw-semibold color-total">${total.toFixed(2)}</span>
             </div>
           </div>
           <div className="payment-method">
@@ -183,14 +266,13 @@ export const Checkout = () => {
                 PSE
               </label>
             </div>
-
-            <button className="boton-card mt-4">Finalizar Compra</button>
+            <button className="boton-card mt-4" onClick={handleSubmit}>Finalizar Compra</button>
           </div>
         </div>
       </div>
-      <section>
-        <FooterMyAccount />
-      </section>
+      <FooterMyAccount />
     </div>
   );
 };
+
+export default Checkout;

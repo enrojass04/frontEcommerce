@@ -22,6 +22,7 @@ const CardProduct = ({ product, images }) => {
 
   const handleAddToCart = () => {
     const newItem = {
+      id: product.id,
       name: product.name_product,
       price: product.price_product,
       quantity: quantity,
