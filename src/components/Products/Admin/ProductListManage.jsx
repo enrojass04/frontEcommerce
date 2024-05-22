@@ -88,9 +88,6 @@ const ProductListManage = () => {
 
   return (
     <div>
-      {/*       <div className="">
-        <FaPlus onClick={() => setShowSave(true)} className='icon-add'/> 
-      </div> */}
       <ButtonAdd onClick={() => setShowSave(true)} />
       <ModalSave
         showSave={showSave}
