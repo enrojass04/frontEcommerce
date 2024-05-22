@@ -9,7 +9,7 @@ export const Checkout = () => {
     <div>
       <section className="banner-page d-flex align-items-center justify-content-center">
         <div>
-          <img src={imagenes.logo} alt="logo ecoommerce" />
+          <img src={imagenes.logoSinFond} alt="logo ecoommerce" />
           <h1>Checkout</h1>
           <div className="d-flex justify-content-center">
             <Link to="/">Home </Link> /<p> Checkout</p>

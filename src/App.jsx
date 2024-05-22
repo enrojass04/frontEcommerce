@@ -47,7 +47,7 @@ function App() {
   const isAdmin = datosUsuario?.user?.id_role === 1;
 
   return (
-    <div className="container-fluid h-100">
+    <div className="h-100">
       <BrowserRouter>
         {datosUsuario ? (
           isAdmin ? (

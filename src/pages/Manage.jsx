@@ -10,7 +10,7 @@ const Manage = () => {
       <div className="row">
         <div className="col-3">
           <div className="logo-header">
-            <img src={imagenes.logo} alt="logo-ecommerce" />
+            <img src={imagenes.logoSinFond} alt="logo-ecommerce" />
             <h4>Ecommerce</h4>
           </div>
           <NavBarAdmin />

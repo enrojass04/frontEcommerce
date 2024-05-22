@@ -6,7 +6,8 @@ import FooterMyAccount from "../components/Footers/FooterMyAccount";
 import HeaderMyaccount from "../components/Headers/HeaderMyaccount";
 import Profile from "../components/Profile";
 import { useNavigate } from "react-router-dom";
-import { Button } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
+import { IoLogInOutline } from "react-icons/io5";
 
 export const MyAccount = () => {
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
@@ -15,7 +16,7 @@ export const MyAccount = () => {
     localStorage.clear();
     navigate("/");
     window.location.reload();
-  }
+  };
 
   return (
     <div>
@@ -25,10 +26,13 @@ export const MyAccount = () => {
 
       {datosUsuario && (
         <div>
-          <Button variant="danger" className="logout-btn" onClick={logout}>Cerrar Sesión</Button>
           <section className="login-register">
-            <Profile user={datosUsuario.user}/>
+            <Profile user={datosUsuario.user} />
           </section>
+          <Button variant="danger" className="boton-card mb-4" onClick={logout}>
+            Cerrar Sesión
+            <IoLogInOutline size={30} />
+          </Button>
         </div>
       )}
       {!datosUsuario && (

@@ -10,13 +10,13 @@ const HomeAdmin = () => {
     localStorage.clear();
     navigate("/");
     window.location.reload();
-  }
+  };
   return (
     <div>
       <div className="row">
         <div className="col-3">
-          <div className="logo-header">
-            <img src={imagenes.logo} alt="logo-ecommerce" />
+          <div className="logo-header-admin">
+            <img src={imagenes.logoSinFond} alt="logo-ecommerce" />
             <h1>EMA Shop</h1>
           </div>
           {/* <ImExit  size={24} color="#000" className="icon-logout" onClick={logout}/> */}
