@@ -11,9 +11,7 @@ const ModalSave = ({ showSave, handleCloseSave, onSave }) => {
     isActive: true,
     id_category: "",
   });
-
   const [imagenBase64, setImagenBase64] = useState("");
-
   const [categories, setCategories] = useState([]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);

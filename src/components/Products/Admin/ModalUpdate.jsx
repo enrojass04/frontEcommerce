@@ -120,11 +120,11 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, product, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleCloseUpdate}>
-          Cerrar
-        </Button>
         <Button type="submit" variant="primary" onClick={handleSaveChanges}>
           Guardar Cambios
+        </Button>
+        <Button variant="secondary" onClick={handleCloseUpdate}>
+          Cerrar
         </Button>
       </Modal.Footer>
     </Modal>
