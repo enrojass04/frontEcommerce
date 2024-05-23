@@ -149,7 +149,7 @@ nav ul li a {
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   justify-content: flex-end;
   align-items: center;
 
@@ -158,8 +158,8 @@ nav ul li a {
     flex-direction: column;
     background-color: #FFF3E3;
     width: 40%;
-    height: 350px;
-    border-radius: 10px;
+    height: 250px;
+    border-radius: 10px 0 0 10px;
     padding: 30px;
     justify-content: center;
 
@@ -279,9 +279,16 @@ nav ul li a {
 
 
 .card-product {
-  border: 1px solid black;
   border-radius: 8px;
+  height: 50px;
+  box-shadow: 0px 0px 4px 0px #00000042;
 }
+
+.card-product:hover{
+  box-shadow: 0px 0px 19px 0px #0000004d;
+}
+
+
 
 /* Modal */
 .modal-overlay {

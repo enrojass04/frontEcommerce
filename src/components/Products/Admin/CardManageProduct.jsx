@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 export const CardManageProduct = ({ product, onEditClick, onDeleteClick }) => {
   return (
@@ -17,8 +17,16 @@ export const CardManageProduct = ({ product, onEditClick, onDeleteClick }) => {
         </div>
       </div>
       <div className="col-2 d-flex align-items-center">
-        <FaEdit className="icon-edit" style={{ cursor: 'pointer', marginRight: '10px' }} onClick={onEditClick}/>
-        <FaTrash className="icon-delete" style={{ cursor: 'pointer' }} onClick={onDeleteClick}/>
+        <FaEdit
+          className="icon-edit"
+          style={{ cursor: "pointer", marginRight: "10px" }}
+          onClick={onEditClick}
+        />
+        <FaTrash
+          className="icon-delete"
+          style={{ cursor: "pointer" }}
+          onClick={onDeleteClick}
+        />
       </div>
     </div>
   );
