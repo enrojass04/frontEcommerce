@@ -3,6 +3,7 @@ import { Button, Modal, Form, Alert } from "react-bootstrap";
 import * as serviceUser from "../../../services/UserService";
 
 const ModalUpdate = ({ showUpdate, handleCloseUpdate, user, onUpdate }) => {
+
   const [updatedUser, setUpdatedUser] = useState({
     isActive: user ? user.isActive : false,
   });
@@ -28,6 +29,7 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, user, onUpdate }) => {
         user.id,
         updatedUser
       );
+      console.log(updatedUserResponse);
       onUpdate(updatedUserResponse.data);
       handleCloseUpdate();
     } catch (error) {

@@ -18,7 +18,7 @@ const ProductListManage = () => {
   const [successMessage, setSuccessMessage] = useState("");
 
   const getProducts = async (page) => {
-    const data = await productService.getAProductsPages(page);
+    const data = await productService.getAProductsPagesAdmin(page);
     setProducts(data.products);
     setTotalPages(data.totalPages);
     setCurrentPage(data.currentPage);

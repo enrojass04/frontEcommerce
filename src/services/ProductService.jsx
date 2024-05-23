@@ -40,6 +40,10 @@ export const getAProductsPages = async (page) => {
   return getProductsWithImages(`${API_URL}/pages?page=${page}`);
 };
 
+export const getAProductsPagesAdmin = async (page) => {
+  return getProductsWithImages(`${API_URL}/?page=${page}`);
+};
+
 // Otros métodos permanecen sin cambios
 export const getProductsService = async () => {
   const response = await fetch(API_URL + "/");
