@@ -7,13 +7,12 @@ export const CardManageImage = ({ image, onDelete }) => {
       <div className="col-10 card-image ">
         <div className="card-body  d-flex flex-row align-items-center">
           <img
-            src={image.url_image}
+            src={`data:image/jpeg;base64,${image.url_image}`}
             alt="thumbnail"
             className="img-thumbnail mx-1"
-            style={{ width: "100px", height: "100px" }}
+            style={{ width: "60px", height: "60px" }}
           />
           <h4 className="col card-title mx-1">{image.id}</h4>
-          <p className="col card-text mx-1 overflow-auto">{image.url_image}</p>
         </div>
       </div>
       <div className="col-2 d-flex align-items-center">

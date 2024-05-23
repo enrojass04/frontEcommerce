@@ -12,7 +12,7 @@ const ProfileAdmin = ({user}) => {
         <div className="d-flex gap-4">
           <div className="account-profile">
             <img src={imagenes.avatar} alt={imagenes.avatar} />
-            <h3 className="fw-semibold text-center mt-3">{user.name_user}</h3>
+            <h4 className="fw-semibold text-center mt-3">{user.name_user}</h4>
             <div className="section-info">
               <div className="d-flex">
                 <IoLocationSharp size={25} color="#000" />
