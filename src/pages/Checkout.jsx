@@ -5,6 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 import { createOrderService } from "../services/OrderService";
 
 export const Checkout = () => {
+
+  const datosUsuario = JSON.parse(localStorage.getItem('dataUserLogin'));  
   const { state } = useLocation();
   const { cartItems } = state || { cartItems: [] };
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);

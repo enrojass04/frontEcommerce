@@ -6,7 +6,6 @@ import About from "./pages/About";
 import { HomeUser } from "./pages/User/HomeUser";
 import { Contact } from "./pages/Contact";
 import { MyAccount } from "./pages/User/MyAccount";
-import { Carrito } from "./pages/Carrito";
 import { Products } from "./pages/Products";
 import { Checkout } from "./pages/Checkout";
 import ProductListManage from "./components/Products/Admin/ProductListManage";
@@ -36,7 +35,6 @@ const UserRoutes = () => (
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="login" element={<MyAccount />} />
-      <Route path="carrito" element={<Carrito />} />
       <Route path="checkout" element={<Checkout />} />
       <Route path="products" element={<Products />} />
       <Route path="products/:id" element={<ProductDetail />} />
