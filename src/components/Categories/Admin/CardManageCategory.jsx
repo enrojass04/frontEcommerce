@@ -3,11 +3,11 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 export const CardManageCategory = ({ category, onEdit, onDelete }) => {
   return (
-    <div className="row card-product">
-      <div className="col-10 card-category d-flex align-items-center">
-        <div className="card-body d-flex flex-row align-items-center">
-          <h4 className="col card-title mx-1">{category.id}</h4>
-          <p className="col card-text mx-1">{category.name_category}</p>
+    <div className="row card-category">
+      <div className="col-10 card-category d-flex align-items-center justify-content-between">
+        <div className="card-body d-flex flex-row">
+          <h4 className="col-2 card-title">{category.id}</h4>
+          <p className="col card-text">{category.name_category}</p>
         </div>
       </div>
       <div className="col-2 d-flex align-items-center">

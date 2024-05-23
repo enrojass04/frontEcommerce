@@ -1,5 +1,5 @@
 #root {
-  max-width: 100%;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -268,6 +268,20 @@ nav ul li a {
   }
 }
 
+.modal-save {
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.modal-save:hover {
+  background-color: #000;
+  color: #fff;
+}
+
 /* *banner call to action */
 
 .banner-call {
@@ -288,13 +302,34 @@ nav ul li a {
   }
 }
 
-.card-product {
+.card-category {
   border-radius: 6px;
   height: 60px;
   box-shadow: 0px 1px 8px 0px #00000026;
 }
 
+.card-category:hover {
+  box-shadow: 1px 7px 14px 0px #00000024;
+}
+
+.card-product {
+  border-radius: 8px;
+  height: 80px;
+  box-shadow: 0px 1px 8px 0px #00000026;
+}
+
 .card-product:hover {
+  box-shadow: 1px 7px 14px 0px #00000024;
+}
+
+
+.card-images {
+  border-radius: 8px;
+  height: 100px;
+  box-shadow: 0px 1px 8px 0px #00000026;
+}
+
+.card-images:hover {
   box-shadow: 1px 7px 14px 0px #00000024;
 }
 

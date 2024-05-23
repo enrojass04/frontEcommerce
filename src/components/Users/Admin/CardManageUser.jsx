@@ -3,7 +3,7 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 export const CardManageUser = ({ user, onEditClick, onDeleteClick }) => {
   return (
-    <div className="row card-product">
+    <div className="row card-category">
       <div className="col-10 d-flex align-items-center ">
         <div className="card-body  d-flex flex-row align-items-center">
           <h4 className="col card-title mx-1">{user.id}</h4>

@@ -75,7 +75,7 @@ const ModalUpdate = ({ showUpdate, handleCloseUpdate, user, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button type="submit" variant="primary" onClick={handleSaveChanges}>
+        <Button type="submit"  variant="primary" onClick={handleSaveChanges}>
           Save Changes
         </Button>
         <Button variant="secondary" onClick={handleCloseUpdate}>
