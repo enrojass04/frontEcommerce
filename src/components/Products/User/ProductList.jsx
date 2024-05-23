@@ -19,6 +19,7 @@ const ProductList = () => {
       data = await productService.getProductsByCategory(category);
     } else {
       data = await productService.getAProductsPages(page);
+      console.log(data)
     }
     setProducts(data.products);
     setTotalPages(data.totalPages || 1);
@@ -88,12 +89,13 @@ const ProductList = () => {
               ))}
             </select>
           </div>
+          {/* Cambiar numero de columna cambia cantidad de productos col-12 muestra 1 col-6 muestra 2 col-4 muestra 3*/}
           {products?.map((product) => (
-            <div key={product.id} sm={12} md={6} lg={4} className="col-6 mb-4">
+            <div key={product.id} sm={12} md={6} lg={4} className="col-4 mb-4">
               <CardProduct
                 key={product.id}
                 product={product}
-                images={product.images} 
+                images={product.images}
               />
             </div>
           ))}

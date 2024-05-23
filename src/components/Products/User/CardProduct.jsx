@@ -13,7 +13,7 @@ const CardProduct = ({ product, images }) => {
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
-  
+
   const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
@@ -56,31 +56,36 @@ const CardProduct = ({ product, images }) => {
           <Link to={`/products/${product.id}`} className="boton-card">
             Más detalles
           </Link>
-
-          <div className="quantity-selector my-3">
-            <button
-              onClick={handleDecrement}
-              className="boton-card mx-3"
-              disabled={!isUserLogged}
-            >
-              -
-            </button>
-            <span className="quantity">{quantity}</span>
-            <button
-              onClick={handleIncrement}
-              className="boton-card mx-3"
-              disabled={!isUserLogged}
-            >
-              +
-            </button>
-            <button
-              className="boton-card mx-3"
-              disabled={!isUserLogged}
-              onClick={handleAddToCart}
-            >
-              Add To Cart
-            </button>
-          </div>
+          {product.quantity_product === 0 ? (
+            <p className="mt-3">Producto Agotado</p>
+          ) : (
+            <>
+              <div className="quantity-selector my-3">
+                <button
+                  onClick={handleDecrement}
+                  className="boton-card mx-1"
+                  disabled={!isUserLogged}
+                >
+                  -
+                </button>
+                <span className="quantity">{quantity}</span>
+                <button
+                  onClick={handleIncrement}
+                  className="boton-card mx-1"
+                  disabled={!isUserLogged}
+                >
+                  +
+                </button>
+                <button
+                  className="boton-card mx-1"
+                  disabled={!isUserLogged}
+                  onClick={handleAddToCart}
+                >
+                  Add To Cart
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

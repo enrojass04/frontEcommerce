@@ -48,30 +48,36 @@ const CardProductDetail = ({ product, images }) => {
               <p className="card-text col">{product.price_product}</p>
               <p className="card-text col">{product.description}</p>
             </div>
-            <div className="quantity-selector mb-3">
-              <button
-                onClick={handleDecrement}
-                className="boton-card mx-3"
-                disabled={!isUserLogged}
-              >
-                -
-              </button>
-              <span className="quantity">{quantity}</span>
-              <button
-                onClick={handleIncrement}
-                className="boton-card mx-3"
-                disabled={!isUserLogged}
-              >
-                +
-              </button>
-              <button
-                className="boton-card mx-3"
-                disabled={!isUserLogged}
-                onClick={handleAddToCart}
-              >
-                Add To Cart
-              </button>
-            </div>
+            {product.quantity_product === 0 ? (
+              <p className="mb-5">Producto Agotado</p>
+            ) : (
+              <>
+                <div className="quantity-selector my-3">
+                  <button
+                    onClick={handleDecrement}
+                    className="boton-card mx-1"
+                    disabled={!isUserLogged}
+                  >
+                    -
+                  </button>
+                  <span className="quantity">{quantity}</span>
+                  <button
+                    onClick={handleIncrement}
+                    className="boton-card mx-1"
+                    disabled={!isUserLogged}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="boton-card mx-1"
+                    disabled={!isUserLogged}
+                    onClick={handleAddToCart}
+                  >
+                    Add To Cart
+                  </button>
+                </div>
+              </>
+            )}
           </div>
           <div className="col-7">
             <div className="row ">
