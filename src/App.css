@@ -157,28 +157,83 @@ nav ul li a {
 
 /* *contenido */
 
-.banner {
+.section-banner {
   display: flex;
-  background-image: url(../src/assets/img/technology-panoramic-banner.jpg);
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 60vh;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
 
-  .info-banner {
+  .banner {
     display: flex;
-    flex-direction: column;
-    background-color: #fff3e3;
-    width: 40%;
-    height: 250px;
-    border-radius: 10px 0 0 10px;
-    padding: 30px;
-    justify-content: center;
+    background-image: url(../src/assets/img/technology-panoramic-banner.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    margin-top: 5px;
+    width: 95%;
+    height: 80vh;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 
-    .title-banner {
-      color: #b88e2f;
+    .info-banner {
+      display: flex;
+      flex-direction: column;
+      background-color: #141718;
+      width: 40%;
+      height: 250px;
+      border-radius: 10px 0 0 10px;
+      padding: 30px;
+      justify-content: center;
+      z-index: 2;
+
+      span {
+        color: #38cb89;
+      }
+
+      .title-banner {
+        color: #fff;
+      }
+
+      p {
+        color: #fefefe;
+      }
+    }
+  }
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    opacity: 0;
+    animation: fade 10s infinite;
+  }
+
+  .slide1 {
+    background-image: url("../src/assets/img/technology-panoramic-banner.jpg");
+  }
+
+  .slide2 {
+    background-image: url("../src/assets/img/tecnologia.jpg");
+  }
+
+  .slide3 {
+    background-image: url("../src/assets/img/celulares.jpg");
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0; /* Inicio: slide completamente oculto */
+    }
+    25% {
+      opacity: 1; /* 25% del tiempo: slide completamente visible */
+    }
+    75% {
+      opacity: 1; /* 75% del tiempo: slide completamente visible */
+    }
+    100% {
+      opacity: 0; /* Fin: slide completamente oculto */
     }
   }
 }
@@ -722,3 +777,53 @@ nav ul li a {
 }
 
 /* *Navbar admin */
+
+/* *landing page */
+.banner-slide {
+  width: 100%; /* Ancho del banner */
+  height: 300px; /* Altura del banner */
+  position: relative; /* Posición relativa para posicionar los slides */
+  overflow: hidden; /* Ocultar partes de los slides que salgan del contenedor */
+}
+
+.slide {
+  width: 100%; /* Ancho del slide igual al del banner */
+  height: 100%; /* Altura del slide igual al del banner */
+  position: absolute; /* Posición absoluta para superponer los slides */
+  top: 0; /* Alinear el slide en la parte superior del banner */
+  left: 0; /* Alinear el slide en la parte izquierda del banner */
+  background-size: cover; /* Ajustar el tamaño del fondo al contenedor */
+  opacity: 0; /* Ocultar inicialmente todos los slides */
+  animation: fade 10s infinite; /* Animación de desvanecimiento durante 10 segundos, infinitamente repetida */
+}
+
+.slide1 {
+  background-image: url("../src/assets/img/technology-panoramic-banner.jpg"); /* URL de la primera imagen */
+}
+
+.slide2 {
+  background-image: url("../src/assets/img/tecnologia.jpg"); /* URL de la segunda imagen */
+  animation-delay: 3s; /* Retraso de 5 segundos para iniciar la animación */
+}
+
+.slide3 {
+  background-image: url("../src/assets/img/celulares.jpg"); /* URL de la tercera imagen */
+  animation-delay: 3s; /* Retraso de 10 segundos para iniciar la animación */
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0; /* Inicio: slide completamente oculto */
+  }
+  25% {
+    opacity: 1; /* 25% del tiempo: slide completamente visible */
+  }
+  75% {
+    opacity: 1; /* 75% del tiempo: slide completamente visible */
+  }
+  100% {
+    opacity: 0; /* Fin: slide completamente oculto */
+  }
+}
+
+/* *landing page */
