@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import FooterMyAccount from "../components/Footers/FooterMyAccount";
 import imagenes from "../assets/imagenes";
 import { Link, useLocation } from "react-router-dom";
 import { createOrderService } from "../services/OrderService";
+import { CartContext } from "../components/Cart/CartContext";
 
 export const Checkout = () => {
-
-  const datosUsuario = JSON.parse(localStorage.getItem('dataUserLogin'));  
   const { state } = useLocation();
   const { cartItems } = state || { cartItems: [] };
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -24,6 +23,9 @@ export const Checkout = () => {
     email: ""
   });
 
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -31,11 +33,11 @@ export const Checkout = () => {
       [id]: value
     }));
   };
-
+  const datosUsuario = JSON.parse(localStorage.getItem('dataUserLogin'));
   const handleSubmit = async (e) => {
     e.preventDefault();
     const orderData = {
-      id_user: 2, // Replace with actual user ID
+      id_user: datosUsuario.user.id,
       products: cartItems.map((item) => ({
         id_product: item.id,
         quantity: item.quantity,
@@ -54,11 +56,37 @@ export const Checkout = () => {
     };
 
     try {
+      
       const createdOrder = await createOrderService(orderData);
+      setMessage("Orden creada correctamente.!");
+      setMessageType("success");
       console.log("Order created successfully:", createdOrder);
+
+       // Limpiar el formulario
+       setFormData({
+        firstName: "",
+        lastName: "",
+        companyName: "",
+        country: "",
+        address: "",
+        state: "",
+        city: "",
+        zipCode: "",
+        phoneNumber: "",
+        email: ""
+      });
+      
+      // Vaciar el carrito
+      clearCart();
     } catch (error) {
+      setMessage("Error al crear la orden. " + error.message);
+      setMessageType("error");
       console.error("Error creating order:", error.message);
     }
+    setTimeout(() => {
+      setMessage(null);
+      setMessageType(null);
+    }, 5000);
   };
 
   return (
@@ -202,9 +230,13 @@ export const Checkout = () => {
                   required
                 />
               </div>
-              <button type="submit" className="boton-card mt-4">Finalizar Compra</button>
             </form>
           </div>
+          {message && (
+            <div className={`alert alert-${messageType}`} role="alert">
+              {message}
+            </div>
+          )}
         </div>
         <div className="col-md-6 sticky-sidebar">
           <div className="order-summary mb-4">
@@ -268,7 +300,7 @@ export const Checkout = () => {
                 PSE
               </label>
             </div>
-            <button className="boton-card mt-4" onClick={handleSubmit}>Finalizar Compra</button>
+              <button className="boton-card mt-1" onClick={handleSubmit}>Finalizar Compra</button>
           </div>
         </div>
       </div>

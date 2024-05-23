@@ -5,7 +5,13 @@ import "../styles/ShoppingCart.css";
 import { useNavigate } from "react-router-dom";
 
 const ShoppingCart = ({ position, onClose }) => {
-  const { cartItems, clearCart } = useContext(CartContext);
+  const {
+    cartItems,
+    clearCart,
+    incrementQuantity,
+    decrementQuantity,
+    removeFromCart,
+  } = useContext(CartContext);
   const cartRef = useRef(null);
   const navigate = useNavigate();
 
@@ -47,6 +53,11 @@ const ShoppingCart = ({ position, onClose }) => {
               <span>
                 {item.price} x {item.quantity}
               </span>
+              <div className="cart-item-actions">
+                <button onClick={() => decrementQuantity(item.id)} className="boton-card">-</button>
+                <button onClick={() => incrementQuantity(item.id)} className="boton-card">+</button>
+                <button onClick={() => removeFromCart(item.id)} className="boton-card">X</button>
+              </div>
             </div>
           </div>
         ))}
@@ -67,4 +78,5 @@ const ShoppingCart = ({ position, onClose }) => {
 };
 
 export default ShoppingCart;
+
 
