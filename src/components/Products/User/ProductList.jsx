@@ -19,7 +19,6 @@ const ProductList = () => {
       data = await productService.getProductsByCategory(category);
     } else {
       data = await productService.getAProductsPages(page);
-      console.log(data)
     }
     setProducts(data.products);
     setTotalPages(data.totalPages || 1);

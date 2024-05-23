@@ -1,13 +1,12 @@
 import React, { useState, useContext } from "react";
 import FooterMyAccount from "../components/Footers/FooterMyAccount";
 import imagenes from "../assets/imagenes";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { createOrderService } from "../services/OrderService";
 import { CartContext } from "../components/Cart/CartContext";
 
 export const Checkout = () => {
-  const { state } = useLocation();
-  const { cartItems } = state || { cartItems: [] };
+  const { cartItems, clearCart } = useContext(CartContext);
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const [formData, setFormData] = useState({
