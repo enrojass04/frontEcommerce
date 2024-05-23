@@ -11,7 +11,7 @@ export const Footer = () => {
           <h3>EMA Store</h3>
         </div>
         <div className="columna">
-          <span>Links</span>
+          <span>Paginas</span>
           <ul>
             <li>
               <a href="#">Inicio</a>
@@ -28,7 +28,7 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="columna">
-          <span>Help</span>
+          <span>Ayuda</span>
           <ul>
             <li>
               <a href="#">Payment Options</a>
@@ -42,21 +42,21 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="columna">
-          <span>Newslater</span>
+          <span>Suscribete</span>
           <form action="#" method="post" className="formulario">
             <input
               type="email"
               placeholder="Ingresa tu Correo electrónico"
               className="input-correo"
             />
-            <span type="submit" className="btn-enviar m-0">
-              SUSCRIBETE
+            <span type="submit" className="boton-card m-0 fw-bold">
+              Suscribete
             </span>
           </form>
         </div>
       </div>
       <div className="fila">
-        <p className="derechos">© 2024 Todos los derechos reservados</p>
+        <p className="derechos">© 2024 Todos los derechos reservados.</p>
       </div>
     </footer>
   );
