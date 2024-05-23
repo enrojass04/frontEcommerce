@@ -1,11 +1,13 @@
 import React from "react";
 import "../../App.css";
+import imagenes from "../../assets/imagenes";
 
 export const Footer = () => {
   return (
     <footer>
       <div className="columnas">
         <div className="columna">
+          <img src={imagenes.logoSinFond} alt="logo-ecommerce" />
           <h3>EMA Store</h3>
         </div>
         <div className="columna">
