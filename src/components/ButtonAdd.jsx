@@ -1,12 +1,13 @@
-import React from 'react';
-import { FaPlus } from 'react-icons/fa';
+import React from "react";
+import { FaPlus } from "react-icons/fa";
 
-const ButtonAdd = ({onClick}) => {
+const ButtonAdd = ({ onClick }) => {
   return (
-    <div>
-        <FaPlus onClick={onClick} className='icon-add '/> 
+    <div onClick={onClick} className="d-flex align-items-center gap-3">
+      <FaPlus className="icon-add " />
+      <h5 className="m-0">Añadir Nuevo</h5>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonAdd
+export default ButtonAdd;

@@ -88,7 +88,10 @@ const ProductListManage = () => {
 
   return (
     <div>
-      <ButtonAdd onClick={() => setShowSave(true)} />
+      <div className="d-flex justify-content-between">
+        <h2 className="text-start fw-bold">Productos</h2>
+        <ButtonAdd onClick={() => setShowSave(true)} />
+      </div>
       <ModalSave
         showSave={showSave}
         handleCloseSave={() => setShowSave(false)}
@@ -112,7 +115,7 @@ const ProductListManage = () => {
           {successMessage}
         </div>
       )}
-      <h1>Productos</h1>
+
       <div className="d-flex flex-column mt-5">
         {products?.map((product) => (
           <div key={product.id} className="mb-4">

@@ -2,8 +2,8 @@ import image1 from './img/image 1.png'
 import logo from './logo/Meubel House_Logos-05.png'
 import fondo from './img/scandinavian-interior-mockup-wall-decal-background 1.png'
 import avatar from './img/avatar foto.jpg'
-import logoEma from './img/logoEMA.jpg'
-import logoSinFond from './img/logo-removebg.png'
+import logoEma from './logo/LogoEMA-green.svg'
+import logoSinFond from './logo/LogoEMA-green.svg'
 import creditCard from './img/CreditCard.png'
 import imagenProducto1 from '../assets/img/producto1.jpg';
 import imagenProducto2 from '../assets/img/producto2.jpg';

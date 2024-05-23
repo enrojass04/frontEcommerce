@@ -69,7 +69,10 @@ const ListManageUser = () => {
 
   return (
     <div className="container-fluid mt-10">
-      <ButtonAdd onClick={() => setShowSave(true)} />
+      <div className="d-flex justify-content-between">
+        <h2 className="text-start fw-bold">Usuarios</h2>
+        <ButtonAdd onClick={() => setShowSave(true)} />
+      </div>
       <ModalSave
         showSave={showSave}
         handleCloseSave={() => setShowSave(false)}
@@ -87,7 +90,7 @@ const ListManageUser = () => {
         user={selectedUser}
         onUpdate={handleUpdateUser}
       />
-      <h1>Usuarios</h1>
+
       <div className="d-flex flex-column mt-5">
         {users?.map((user) => (
           <div key={user.id} className="mb-4">

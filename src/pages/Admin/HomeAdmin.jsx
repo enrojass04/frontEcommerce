@@ -13,15 +13,15 @@ const HomeAdmin = () => {
   };
   return (
     <div>
-      <div className="row">
+      <div className="row section-admin">
         <div className="col-3">
-          <div className="logo-header-admin">
+          <div className="logo-header-admin mt-2">
             <img src={imagenes.logoSinFond} alt="logo-ecommerce" />
             <h1>EMA Shop</h1>
           </div>
           <NavBarAdmin />
         </div>
-        <div className="col-9">  
+        <div className="col-9 section-content">
           <div className="d-flex flex-column mt-5">
             <Outlet />
           </div>

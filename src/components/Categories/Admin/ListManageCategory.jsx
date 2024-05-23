@@ -61,7 +61,10 @@ const ListManageCategory = () => {
 
   return (
     <div>
-      <ButtonAdd onClick={() => setShowSave(true)} />
+      <div className="d-flex justify-content-between">
+        <h2 className="text-start fw-bold">Categorías</h2>
+        <ButtonAdd onClick={() => setShowSave(true)} />
+      </div>
       <ModalSave
         showSave={showSave}
         handleCloseSave={() => setShowSave(false)}
@@ -79,7 +82,7 @@ const ListManageCategory = () => {
         category={selectedCategory}
         onDelete={handleDeleteCategory}
       />
-      <h1>Categorías</h1>
+
       <div className="d-flex flex-column mt-5">
         {categories?.map((category) => (
           <div key={category.id} className="mb-4">
@@ -97,4 +100,3 @@ const ListManageCategory = () => {
 };
 
 export default ListManageCategory;
-

@@ -1,10 +1,10 @@
 import React from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 export const CardManageUser = ({ user, onEditClick, onDeleteClick }) => {
   return (
-    <div className="row">
-      <div className="col-10 card-product ">
+    <div className="row card-product">
+      <div className="col-10 d-flex align-items-center ">
         <div className="card-body  d-flex flex-row align-items-center">
           <h4 className="col card-title mx-1">{user.id}</h4>
           <p className="col card-text mx-1">{user.name_user}</p>
@@ -18,12 +18,12 @@ export const CardManageUser = ({ user, onEditClick, onDeleteClick }) => {
         </div>
       </div>
       <div className="col-2 d-flex align-items-center">
-        <FaEdit
+        <FiEdit
           className="icon-edit"
           style={{ cursor: "pointer", marginRight: "10px" }}
           onClick={onEditClick}
         />
-        <FaTrash
+        <FiTrash2
           className="icon-delete"
           style={{ cursor: "pointer" }}
           onClick={onDeleteClick}

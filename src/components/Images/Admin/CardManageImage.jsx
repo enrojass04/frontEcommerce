@@ -1,9 +1,9 @@
 import React from "react";
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FiTrash2 } from "react-icons/fi";
 
 export const CardManageImage = ({ image, onDelete }) => {
   return (
-    <div className="row">
+    <div className="row card-product">
       <div className="col-10 card-image ">
         <div className="card-body  d-flex flex-row align-items-center">
           <img
@@ -17,7 +17,7 @@ export const CardManageImage = ({ image, onDelete }) => {
         </div>
       </div>
       <div className="col-2 d-flex align-items-center">
-        <FaTrash
+        <FiTrash2
           className="icon-delete"
           style={{ cursor: "pointer" }}
           onClick={onDelete}

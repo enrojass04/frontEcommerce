@@ -41,13 +41,16 @@ const ListManageImage = () => {
 
   return (
     <div>
-      <ButtonAdd onClick={() => setShowSave(true)} />
+      <div className="d-flex justify-content-between">
+        <h2 className="text-start fw-bold">Imágenes</h2>
+        <ButtonAdd onClick={() => setShowSave(true)} />
+      </div>
       <ModalSave
         showSave={showSave}
         handleCloseSave={() => setShowSave(false)}
         onSave={handleSaveNewImage}
       />
-      <h1>Imágenes</h1>
+
       <div className="d-flex flex-column mt-5">
         {images?.map((image) => (
           <div key={image.id} className="mb-4">
