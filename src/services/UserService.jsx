@@ -1,12 +1,34 @@
 const API_URL = `${import.meta.env.VITE_API_URL}/users`;
+const API_URL_ROLES = `${import.meta.env.VITE_API_URL}/roles`;
 
 export const getUsersService = async () => {
-  const response = await fetch(API_URL + "/");
-  if (!response.ok) {
+  const [usersResponse, rolesResponse] = await Promise.all([
+    fetch(API_URL + "/"),
+    fetch(API_URL_ROLES + "/"),
+  ]);
+
+  if (!usersResponse.ok || !rolesResponse.ok) {
     throw new Error("Error de conexión");
   }
-  const data = await response.json();
-  return data;
+
+  const usersData = await usersResponse.json();
+  const rolesData = await rolesResponse.json();
+  const rolesArray = Array.isArray(rolesData.roles) ? rolesData.roles : [];
+
+  const rolesMap = rolesArray.reduce((acc, role) => {
+    acc[role.id] = role.name_role;
+    return acc;
+  }, {});
+
+  console.log(rolesMap);
+
+  const usersWithRoles = usersData.users.map((user) => ({
+    ...user,
+    name_role: rolesMap[user.id_role],
+  }));
+  console.log(usersWithRoles);
+
+  return { users: usersWithRoles };
 };
 
 export const registerServive = async (data) => {
@@ -63,7 +85,6 @@ export const updateUser = async (userId, updateUser) => {
   const updatedUser = await response.json();
   return updatedUser;
 };
-
 
 export const deleteUser = async (userId) => {
   const response = await fetch(`${API_URL}/${userId}`, {

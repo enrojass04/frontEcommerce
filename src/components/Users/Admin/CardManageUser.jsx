@@ -13,7 +13,7 @@ export const CardManageUser = ({ user, onEditClick, onDeleteClick }) => {
             {user.isActive ? "Activo" : "Inactivo"}
           </p>
           <p className="col card-text mx-1">
-            {user.id_role}
+            {user.name_role}
           </p>
         </div>
       </div>
