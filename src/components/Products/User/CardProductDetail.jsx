@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Cart/CartContext";
+import StarRating from '../../Rating/StarRating';  
 
 const CardProductDetail = ({ product, images }) => {
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
@@ -47,6 +48,7 @@ const CardProductDetail = ({ product, images }) => {
               <h3 className="card-title col">{product.name_product}</h3>
               <p className="card-text col">{product.price_product}</p>
               <p className="card-text col">{product.description}</p>
+              {isUserLogged && (<StarRating productId={product.id} /> )}
             </div>
             {product.quantity_product === 0 ? (
               <p className="mb-5">Producto Agotado</p>
