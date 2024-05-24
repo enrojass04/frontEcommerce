@@ -51,7 +51,9 @@ const Login = () => {
             onChange={changePassword}
           />
         </div>
-        <button type="submit">Iniciar sesión</button>
+        <button type="submit" className="boton-card">
+          Iniciar sesión
+        </button>
       </form>
       {message && <p>{message}</p>}
     </div>

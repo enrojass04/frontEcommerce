@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import * as RegisterService from '../../services/UserService';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import * as RegisterService from "../../services/UserService";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
-  const [name_user, setName_user] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [name_user, setName_user] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const changeName = (name) => {
     setName_user(name.target.value);
@@ -25,15 +25,15 @@ const Register = () => {
       let data = { name_user, email, password };
       const res = await RegisterService.registerServive(data);
       if (!res.ok) {
-        throw new Error('Failed to create user');
+        throw new Error("Failed to create user");
       } else {
-        setMessage('Account created successfully');
-        setName_user(''); // Restablecer nombre
-        setEmail(''); // Restablecer email
-        setPassword(''); // Restablecer contraseña
+        setMessage("Account created successfully");
+        setName_user(""); // Restablecer nombre
+        setEmail(""); // Restablecer email
+        setPassword(""); // Restablecer contraseña
         setTimeout(() => {
-          setMessage('');
-          navigate('/login');
+          setMessage("");
+          navigate("/login");
         }, 2000); // Redirigir después de 2 segundos
       }
     } catch (error) {
@@ -80,7 +80,9 @@ const Register = () => {
             onChange={changePassword}
           />
         </div>
-        <button type="submit">Registrarse</button>
+        <button type="submit" className="boton-card">
+          Registrarse
+        </button>
       </form>
     </div>
   );
