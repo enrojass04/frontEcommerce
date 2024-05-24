@@ -1,6 +1,7 @@
 import React from "react";
 import "../../App.css";
 import imagenes from "../../assets/imagenes";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -16,16 +17,16 @@ export const Footer = () => {
           <span>Paginas</span>
           <ul>
             <li>
-              <a href="#">Inicio</a>
+              <Link to="/">Inicio</Link>
             </li>
             <li>
-              <a href="#">Productos</a>
+              <Link to="/products">Productos</Link>
             </li>
             <li>
-              <a href="#">Acerca de</a>
+              <Link to="/about">Acerca de</Link>
             </li>
             <li>
-              <a href="#">Contacto</a>
+              <Link to="/contact">Contactanos</Link>
             </li>
           </ul>
         </div>

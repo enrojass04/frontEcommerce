@@ -18,19 +18,24 @@ const Login = () => {
   const loginUser = async (event) => {
     event.preventDefault();
     let data = { email, password };
-    const resp = await loginService.loginService(data);
+    try {
+      const resp = await loginService.loginService(data);
 
-    if (resp.ok) {
-      const result = await resp.json();
-      localStorage.setItem("dataUserLogin", JSON.stringify(result));
-      setMessage(`Bienvenido`);
-      setTimeout(() => {
-        setMessage("");
-        navigate("/");
-        window.location.reload();
-      }, 2000);
-    } else {
-      console.error("Error en el inicio de sesión");
+      if (resp.ok) {
+        const result = await resp.json();
+        localStorage.setItem("dataUserLogin", JSON.stringify(result));
+        setMessage("Bienvenido");
+        setTimeout(() => {
+          setMessage("");
+          navigate("/");
+          window.location.reload();
+        }, 2000);
+      } else {
+        setMessage("Credenciales incorrectas");
+      }
+    } catch (error) {
+      console.error("Error en el inicio de sesión", error);
+      setMessage("Ocurrió un error. Intente nuevamente.");
     }
   };
 
