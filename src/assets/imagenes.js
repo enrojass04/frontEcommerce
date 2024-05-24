@@ -25,6 +25,17 @@ import catTelevisores from "../assets/img/televisores.png";
 import catConsolas from "../assets/img/consolas.png";
 import catReloges from "../assets/img/relojes.png";
 import catCamaras from "../assets/img/camaras.png";
+import imagenabout from "../assets/img/primera seccion.jpg";
+import desarrollador1 from "../assets/img/desarrollador 1.jpg";
+import desarrollador2 from "../assets/img/desarrollador 2.jpg";
+import desarrollador3 from "../assets/img/desarrollador 3.jpg";
+import marca1 from "../assets/logo/marca1.png";
+import marca2 from "../assets/logo/marca2.png";
+import marca3 from "../assets/logo/marca3.png";
+import marca4 from "../assets/logo/marca4.png";
+import marca5 from "../assets/logo/marca5.png";
+import marca6 from "../assets/logo/marca6.png";
+
 
 export default {
   img1: image1,
@@ -54,4 +65,15 @@ export default {
   catConsolas: catConsolas,
   catReloges: catReloges,
   catCamaras: catCamaras,
+  imagenabout: imagenabout,
+  desarrollador1: desarrollador1,
+  desarrollador2: desarrollador2,
+  desarrollador3: desarrollador3,
+  marca1: marca1,
+  marca2: marca2,
+  marca3: marca3,
+  marca4: marca4,
+  marca5: marca5,
+  marca6: marca6,
+
 };
