@@ -63,21 +63,21 @@ const CardProduct = ({ product, images }) => {
               <div className="quantity-selector my-3">
                 <button
                   onClick={handleDecrement}
-                  className="boton-card mx-1"
+                  className="boton-card"
                   disabled={!isUserLogged}
                 >
                   -
                 </button>
-                <span className="quantity">{quantity}</span>
+                <span className="quantity mx-2">{quantity}</span>
                 <button
                   onClick={handleIncrement}
-                  className="boton-card mx-1"
+                  className="boton-card"
                   disabled={!isUserLogged}
                 >
                   +
                 </button>
                 <button
-                  className="boton-card mx-1"
+                  className="boton-card mx-3"
                   disabled={!isUserLogged}
                   onClick={handleAddToCart}
                 >
