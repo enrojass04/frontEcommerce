@@ -7,8 +7,10 @@ export const Footer = () => {
     <footer>
       <div className="columnas">
         <div className="columna">
-          <img src={imagenes.logoSinFond} alt="logo-ecommerce" />
-          <h3>EMA Store</h3>
+          <div className="align-items-center">
+            <img src={imagenes.logoSinFond} alt="logo-ecommerce" />
+            <h3>EMA Store</h3>
+          </div>
         </div>
         <div className="columna">
           <span>Paginas</span>
