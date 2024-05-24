@@ -24,7 +24,7 @@ export const Checkout = () => {
     phoneNumber: "",
     email: "",
   });
-
+  const [errors, setErrors] = useState({});
   const [message, setMessage] = useState(null);
   const [messageType, setMessageType] = useState(null);
 
@@ -38,6 +38,21 @@ export const Checkout = () => {
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validar campos requeridos
+    const requiredFields = ['firstName', 'lastName', 'country', 'address', 'state', 'city', 'zipCode', 'phoneNumber', 'email'];
+    const newErrors = {};
+    requiredFields.forEach(field => {
+      if (!formData[field]) {
+        newErrors[field] = 'Este campo es requerido';
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    
     const orderData = {
       id_user: datosUsuario.user.id,
       products: cartItems.map((item) => ({
@@ -117,6 +132,9 @@ export const Checkout = () => {
                     onChange={handleChange}
                     required
                   />
+                  {errors.firstName && (
+                    <p className="text-danger">{errors.firstName}</p>
+                  )}
                 </div>
                 <div className="form-group col-md-5 text-start mb-2">
                   <label htmlFor="lastName">Apellidos</label>
@@ -128,6 +146,9 @@ export const Checkout = () => {
                     onChange={handleChange}
                     required
                   />
+                  {errors.lastName && (
+                    <p className="text-danger">{errors.lastName}</p>
+                  )}
                 </div>
               </div>
               <div className="form-group">
@@ -161,6 +182,9 @@ export const Checkout = () => {
                   <option value="gb">United Kingdom</option>
                   <option value="co">Colombia</option>
                 </select>
+                {errors.country && (
+                  <p className="text-danger">{errors.country}</p>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="address">Dirección</label>
@@ -172,6 +196,9 @@ export const Checkout = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.address && (
+                  <p className="text-danger">{errors.address}</p>
+                )}
               </div>
               <div className="form-group col-md-12">
                 <label htmlFor="state">Departamento</label>
@@ -191,6 +218,9 @@ export const Checkout = () => {
                   <option value="atl">Atlántico</option>
                   <option value="cal">Caldas</option>
                 </select>
+                {errors.state && (
+                  <p className="text-danger">{errors.state}</p>
+                )}
               </div>
               <div className="form-group col-md-12">
                 <label htmlFor="city">Ciudad</label>
@@ -203,6 +233,9 @@ export const Checkout = () => {
                   placeholder="Eje. New York"
                   required
                 />
+                {errors.city && (
+                  <p className="text-danger">{errors.city}</p>
+                )}
               </div>
               <div className="form-group col-md-12">
                 <label htmlFor="zipCode">Zip Code</label>
@@ -214,6 +247,9 @@ export const Checkout = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.zipCode && (
+                  <p className="text-danger">{errors.zipCode}</p>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="phoneNumber">Teléfono / Celular</label>
@@ -225,6 +261,9 @@ export const Checkout = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.phoneNumber && (
+                  <p className="text-danger">{errors.phoneNumber}</p>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
@@ -236,7 +275,13 @@ export const Checkout = () => {
                   onChange={handleChange}
                   required
                 />
+                {errors.email && (
+                  <p className="text-danger">{errors.email}</p>
+                )}
               </div>
+              <button className="boton-card mt-1" type="submit">
+                Finalizar Compra
+              </button>
             </form>
           </div>
           {message && (
@@ -311,9 +356,6 @@ export const Checkout = () => {
                 PSE
               </label>
             </div>
-            <button className="boton-card mt-1" onClick={handleSubmit}>
-              Finalizar Compra
-            </button>
           </div>
         </div>
       </div>
