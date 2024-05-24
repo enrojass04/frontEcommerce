@@ -7,7 +7,10 @@ import { CartContext } from "../components/Cart/CartContext";
 
 export const Checkout = () => {
   const { cartItems, clearCart } = useContext(CartContext);
-  const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -19,7 +22,7 @@ export const Checkout = () => {
     city: "",
     zipCode: "",
     phoneNumber: "",
-    email: ""
+    email: "",
   });
 
   const [message, setMessage] = useState(null);
@@ -29,10 +32,10 @@ export const Checkout = () => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value
+      [id]: value,
     }));
   };
-  const datosUsuario = JSON.parse(localStorage.getItem('dataUserLogin'));
+  const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
   const handleSubmit = async (e) => {
     e.preventDefault();
     const orderData = {
@@ -55,14 +58,13 @@ export const Checkout = () => {
     };
 
     try {
-      
       const createdOrder = await createOrderService(orderData);
       setMessage("Orden creada correctamente.!");
       setMessageType("success");
       console.log("Order created successfully:", createdOrder);
 
-       // Limpiar el formulario
-       setFormData({
+      // Limpiar el formulario
+      setFormData({
         firstName: "",
         lastName: "",
         companyName: "",
@@ -72,9 +74,9 @@ export const Checkout = () => {
         city: "",
         zipCode: "",
         phoneNumber: "",
-        email: ""
+        email: "",
       });
-      
+
       // Vaciar el carrito
       clearCart();
     } catch (error) {
@@ -129,7 +131,9 @@ export const Checkout = () => {
                 </div>
               </div>
               <div className="form-group">
-                <label htmlFor="companyName">Nombre de la Empresa (Opcional)</label>
+                <label htmlFor="companyName">
+                  Nombre de la Empresa (Opcional)
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -148,7 +152,9 @@ export const Checkout = () => {
                   onChange={handleChange}
                   required
                 >
-                  <option value="" disabled>Elige un país...</option>
+                  <option value="" disabled>
+                    Elige un país...
+                  </option>
                   <option value="us">United States</option>
                   <option value="ca">Canada</option>
                   <option value="mx">Mexico</option>
@@ -176,7 +182,9 @@ export const Checkout = () => {
                   onChange={handleChange}
                   required
                 >
-                  <option value="" disabled>Elige un Departamento...</option>
+                  <option value="" disabled>
+                    Elige un Departamento...
+                  </option>
                   <option value="cun">Cundinamarca</option>
                   <option value="boj">Boyaca</option>
                   <option value="ant">Antioquia</option>
@@ -243,19 +251,23 @@ export const Checkout = () => {
               <span className="fw-bold fs-5">Producto</span>
               <span className="fw-bold fs-5">Subtotal</span>
             </div>
-            {cartItems.map((item, index) => (
-              <div key={index} className="d-flex justify-content-between">
-                <div className="d-flex gap-2">
-                  <span>{item.name}</span>
-                  <p>x{item.quantity}</p>
+            <div className="scroll-product">
+              {cartItems.map((item, index) => (
+                <div key={index} className="d-flex justify-content-between">
+                  <div className="d-flex gap-2">
+                    <span>{item.name}</span>
+                    <p>x{item.quantity}</p>
+                  </div>
+                  <span>${(item.price * item.quantity).toFixed(2)}</span>
                 </div>
-                <span>${(item.price * item.quantity).toFixed(2)}</span>
-              </div>
-            ))}
+              ))}
+            </div>
             <hr />
             <div className="d-flex justify-content-between font-weight-bold">
               <span className="fw-bold fs-4">Total</span>
-              <span className="fs-4 fw-semibold color-total">${total.toFixed(2)}</span>
+              <span className="fs-4 fw-semibold color-total">
+                ${total.toFixed(2)}
+              </span>
             </div>
           </div>
           <div className="payment-method">
@@ -299,7 +311,9 @@ export const Checkout = () => {
                 PSE
               </label>
             </div>
-              <button className="boton-card mt-1" onClick={handleSubmit}>Finalizar Compra</button>
+            <button className="boton-card mt-1" onClick={handleSubmit}>
+              Finalizar Compra
+            </button>
           </div>
         </div>
       </div>

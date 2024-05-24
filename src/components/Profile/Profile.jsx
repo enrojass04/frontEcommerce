@@ -22,7 +22,7 @@ const Profile = ({ user }) => {
             <img src={imagenes.avatar} alt={imagenes.avatar} />
             <h3 className="fw-semibold text-center mt-3">{user.name_user}</h3>
             <div className="d-flex balance-tag">
-              <IoWallet size={25} color="#B88E2F" />
+              <IoWallet size={25} color="141718" />
               <span>Balance: $5.000</span>
             </div>
             <div className="section-info">

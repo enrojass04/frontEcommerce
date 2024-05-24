@@ -610,22 +610,22 @@ footer {
 
   .active > .page-link,
   .page-link.active {
-    background-color: #fbebb5 !important;
-    border-color: #fbebb5;
+    background-color: #38cb89 !important;
+    border-color: #38cb89;
     color: #000;
   }
 
   .page-item :active {
-    background-color: #fbebb5 !important;
+    background-color: #38cb89 !important;
   }
 
   .page-link:hover {
-    background-color: #fbebb5 !important;
-    color: #000;
+    background-color: #38cb89 !important;
+    color: #141718;
   }
 
   .page-link:focus {
-    box-shadow: 0 0 0 0.25rem rgba(253, 237, 13, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(13, 253, 85, 0.25);
   }
 }
 /* paginación */
@@ -688,7 +688,30 @@ footer {
 }
 
 .color-total {
-  color: #b88e2f;
+  color: #38cb89;
+}
+
+.scroll-product{
+  overflow-y: auto;
+  padding: 10px;
+  height: 150px;
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Ancho del scrollbar */
+}
+
+/* Fondo de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+  background: #141718; /* Color de fondo del track */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Barra de desplazamiento (la parte que se mueve) */
+::-webkit-scrollbar-thumb {
+  background-color: #38cb89; /* Color del scrollbar */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 2px solid #141718; /* Espacio entre el scrollbar y el track */
 }
 
 .form-check {
@@ -962,3 +985,14 @@ footer {
 }
 
 /* *page about */
+
+/* *arreglo de imagen de producto */
+.img-fluid{
+  width: 300px;
+  height: 300px;
+}
+
+.tamano-imagen:hover{
+  border: 3px solid #38cb89
+}
+/* *arreglo de imagen de producto */
