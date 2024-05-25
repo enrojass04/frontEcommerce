@@ -51,7 +51,7 @@ const CardProduct = ({ product, images }) => {
           <p className="card-text">{product.description}</p>
         </div>
         <div className="col-12">
-          <p className="card-text precio">{product.price_product}</p>
+          <p className="card-text precio">$ {product.price_product}</p>
         </div>
         <div className="col-12 mt-3">
           <Link to={`/products/${product.id}`} className="boton-card">

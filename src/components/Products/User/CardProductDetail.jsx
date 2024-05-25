@@ -48,7 +48,7 @@ const CardProductDetail = ({ product, images }) => {
           <div className="col d-flex flex-column align-items-center justify-content-center">
             <div className="card-body">
               <h3 className="card-title col">{product.name_product}</h3>
-              <p className="card-text col">{product.price_product}</p>
+              <p className="card-text col precio">${product.price_product}</p>
               <p className="card-text col">{product.description}</p>
               {isUserLogged && <StarRating productId={product.id} />}
             </div>
