@@ -4,6 +4,7 @@ import { ImExit } from "react-icons/im";
 import { FiHome, FiUsers, FiImage } from "react-icons/fi";
 import { TbCategory } from "react-icons/tb";
 import { HiComputerDesktop } from "react-icons/hi2";
+import { Button } from "react-bootstrap";
 
 const NavBarAdmin = () => {
   return (
