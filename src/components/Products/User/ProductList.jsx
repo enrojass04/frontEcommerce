@@ -5,6 +5,7 @@ import * as productService from "../../../services/ProductService";
 import * as categoryService from "../../../services/CategoryService";
 import iconos from "../../../assets/iconos";
 import "../../../App.css";
+import { IoFilterCircleOutline } from "react-icons/io5";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -71,9 +72,9 @@ const ProductList = () => {
     <div>
       <div className="container">
         <div className="row mt-3">
-          <div className="d-flex align-items-center gap-2 mb-3 form-container">
+          <div className="d-flex align-items-center gap-2 mb-3 form-container-filter">
             <div>
-              <img src={iconos.filter} alt="" />
+              <IoFilterCircleOutline size={30} color="#38cb89" />
             </div>
             <select
               className="form-select"

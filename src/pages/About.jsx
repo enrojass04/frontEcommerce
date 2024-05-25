@@ -43,17 +43,17 @@ const About = () => {
         <div className="team-work">
           <div className="card-team">
             <img src={imagenes.desarrollador1} alt="" />
-            <span>Edwin Rojas s</span>
+            <span className="fw-bold mt-3">Edwin Rojas s</span>
             <p>Desarrollador FullStack</p>
           </div>
           <div className="card-team">
             <img src={imagenes.desarrollador2} alt="" />
-            <span>Alejandro Lora</span>
+            <span className="fw-bold mt-3">Alejandro Lora</span>
             <p>Desarrollador Back</p>
           </div>
           <div className="card-team">
             <img src={imagenes.desarrollador3} alt="" />
-            <span>Manuel Chicangana</span>
+            <span className="fw-bold mt-3">Manuel Chicangana</span>
             <p>Desarrollador Front</p>
           </div>
         </div>
