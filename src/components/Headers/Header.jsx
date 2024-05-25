@@ -1,18 +1,27 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBarUser from "../NavBar/NavBarUser";
 import ShoppingCart from "../Cart/ShoppingCart";
 import imagenes from "../../assets/imagenes";
 import iconos from "../../assets/iconos";
 import { CartContext } from "../Cart/CartContext";
 import "../../App.css";
+import { Button } from "react-bootstrap";
+import { IoLogInOutline } from "react-icons/io5";
 
 export const Header = () => {
+  const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cartItems } = useContext(CartContext);
   const cartButtonRef = useRef(null);
   const [cartPosition, setCartPosition] = useState({ top: 0, left: 0 });
 
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
+    window.location.reload();
+  };
   useEffect(() => {
     if (cartButtonRef.current) {
       const rect = cartButtonRef.current.getBoundingClientRect();
@@ -27,10 +36,8 @@ export const Header = () => {
     setIsCartOpen(!isCartOpen);
   };
 
-  const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
-
   return (
-    <header>
+    <header className="d-flex aling-item-center">
       <div className="logo-header">
         <img src={imagenes.logoSinFond} alt="logo-ecommerce" />
         <h3>EMA Store</h3>
@@ -38,6 +45,16 @@ export const Header = () => {
       <NavBarUser />
       <nav>
         <ul>
+          {datosUsuario && (
+            <li>
+
+                <IoLogInOutline
+                  size={30}
+                  variant="danger"
+                  onClick={logout}
+                />
+            </li>
+          )}
           <li>
             <Link to="/login">
               <img src={iconos.login} alt="icono Login" />

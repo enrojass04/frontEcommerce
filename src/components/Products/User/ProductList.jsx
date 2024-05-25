@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardProduct from "../User/CardProduct";
-import FooterMyAccount from "../../Footers/FooterMyAccount";
-import * as productService from "../../../services/ProductService";
+import * as productService from "../../../services/ProductService"; //Conexión con archivo services
 import * as categoryService from "../../../services/CategoryService";
 import iconos from "../../../assets/iconos";
 import "../../../App.css";
@@ -22,6 +21,7 @@ const ProductList = () => {
       data = await productService.getAProductsPages(page);
     }
     setProducts(data.products);
+    console.log(data.products)
     setTotalPages(data.totalPages || 1);
     setCurrentPage(data.currentPage || 1);
   };
@@ -89,7 +89,6 @@ const ProductList = () => {
               ))}
             </select>
           </div>
-          {/* Cambiar numero de columna cambia cantidad de productos col-12 muestra 1 col-6 muestra 2 col-4 muestra 3*/}
           {products?.map((product) => (
             <div key={product.id} sm={12} md={6} lg={4} className="col-4 mb-4">
               <CardProduct

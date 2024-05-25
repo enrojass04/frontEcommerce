@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { CardManageProduct } from "./CardManageProduct";
-import { FaPlus } from "react-icons/fa";
 import * as productService from "../../../services/ProductService";
 import ButtonAdd from "../../ButtonAdd";
 import ModalSave from "./ModalSave";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import imagenes from "../../assets/imagenes";
 import { IoLocationSharp, IoMail } from "react-icons/io5";
 import { MdPhoneAndroid } from "react-icons/md";

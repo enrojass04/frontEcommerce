@@ -20,10 +20,6 @@ const MyAccountAdmin = () => {
           <section className="login-register">
             <ProfileAdmin user={datosUsuario.user} />
           </section>
-          <Button variant="danger" className="boton-card mb-4" onClick={logout}>
-            Cerrar Sesión
-            <IoLogInOutline size={30} />
-          </Button>
         </div>
     </div>
   )

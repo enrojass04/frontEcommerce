@@ -1,12 +1,18 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ImExit } from "react-icons/im";
 import { FiHome, FiUsers, FiImage } from "react-icons/fi";
 import { TbCategory } from "react-icons/tb";
 import { HiComputerDesktop } from "react-icons/hi2";
+import { IoLogInOutline } from "react-icons/io5";
 import { Button } from "react-bootstrap";
 
 const NavBarAdmin = () => {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
+    window.location.reload();
+  };
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">
       <nav>
@@ -41,6 +47,10 @@ const NavBarAdmin = () => {
               Imágenes
             </Link>
           </li>
+          <Button variant="danger" className="boton-card mb-4" onClick={logout}>
+            Cerrar Sesión
+            <IoLogInOutline size={30} />
+          </Button>
         </ul>
       </nav>
     </div>

@@ -1,5 +1,4 @@
 import React from "react";
-//assets
 import imagenes from "../assets/imagenes";
 import { Link } from "react-router-dom";
 import "../App.css";
@@ -13,7 +12,7 @@ export const Products = () => {
           <img src={imagenes.logoSinFond} alt="logo ecoommerce" />
           <h1>Productos</h1>
           <div className="d-flex justify-content-center">
-            <Link to="/">Home </Link> /<p> Productos</p>
+            <Link to="/">Home </Link > /<p> Productos</p>
           </div>
         </div>
       </section>

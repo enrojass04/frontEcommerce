@@ -88,7 +88,6 @@ export const Checkout = () => {
       setMessageType("success");
       console.log("Order created successfully:", createdOrder);
 
-      // Limpiar el formulario
       setFormData({
         firstName: "",
         lastName: "",

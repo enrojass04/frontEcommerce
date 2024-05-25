@@ -5,19 +5,9 @@ import Register from "../../components/Auth/Register";
 import FooterMyAccount from "../../components/Footers/FooterMyAccount";
 import HeaderMyaccount from "../../components/Headers/HeaderMyaccount";
 import Profile from "../../components/Profile/Profile";
-import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { IoLogInOutline } from "react-icons/io5";
-
 
 export const MyAccount = () => {
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
-  const navigate = useNavigate();
-  const logout = () => {
-    localStorage.clear();
-    navigate("/");
-    window.location.reload();
-  };
 
   return (
     <div>
@@ -30,10 +20,6 @@ export const MyAccount = () => {
           <section className="login-register">
             <Profile user={datosUsuario.user} />
           </section>
-          <Button variant="danger" className="boton-card mb-4" onClick={logout}>
-            Cerrar Sesión
-            <IoLogInOutline size={30} />
-          </Button>
         </div>
       )}
       {!datosUsuario && (

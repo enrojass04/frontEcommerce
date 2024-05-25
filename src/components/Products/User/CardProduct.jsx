@@ -4,6 +4,7 @@ import "../../../App.css";
 import { CartContext } from "../../Cart/CartContext";
 
 const CardProduct = ({ product, images }) => {
+  
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
   const isUserLogged = datosUsuario?.user?.id_role === 2;
 

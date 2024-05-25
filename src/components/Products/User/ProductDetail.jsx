@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardProductDetail from "./CardProductDetail";
-import * as getAProduct from '../../../services/ProductService';
+import * as getProduct from '../../../services/ProductService';
 import * as getAImages from '../../../services/ImageService';
 import { useParams } from "react-router-dom";
 
@@ -15,7 +15,7 @@ const ProductDetail = () => {
 
   const getProductDetail = async () => {
     try {
-      const dataProduct = await getAProduct.getAProduct(id);
+      const dataProduct = await getProduct.getAProduct(id);
       const dataImages = await getAImages.getImagesById(id);
 
       setProduct(dataProduct.product);
