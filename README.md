@@ -41,7 +41,7 @@ Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
     cd frontend
     npm install
     ```
-    Crea un archivo .env en la raíz y proporciona los datos de tu base de datos como se muestra en el ejemplo:
+    Crea un archivo .env en la raíz y genera la url principal del proyecto:
     ```
     VITE_API_URL=http://127.0.0.1:3000/api/
     ```
@@ -51,10 +51,10 @@ Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
     npm install
     ```
 
-4. Ejecución del backend:
+4. Ejecución del frontend:
     Ejecuta el comando en consola
     ```bash
    npm run dev
     ```
 
-5. [Vídeo](http://ejemplo.com)
+5. [Vídeo presentación](https://youtu.be/_7DyT_CKbMo)
