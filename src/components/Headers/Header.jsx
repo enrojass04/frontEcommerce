@@ -8,6 +8,7 @@ import { CartContext } from "../Cart/CartContext";
 import "../../App.css";
 import { Button } from "react-bootstrap";
 import { IoLogInOutline } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa6";
 
 export const Header = () => {
   const datosUsuario = JSON.parse(localStorage.getItem("dataUserLogin"));
@@ -47,17 +48,17 @@ export const Header = () => {
         <ul>
           {datosUsuario && (
             <li>
-
-                <IoLogInOutline
-                  size={30}
-                  variant="danger"
-                  onClick={logout}
-                />
+              <IoLogInOutline
+                size={30}
+                variant="danger"
+                onClick={logout}
+                className="icon"
+              />
             </li>
           )}
           <li>
             <Link to="/login">
-              <img src={iconos.login} alt="icono Login" />
+              <FaRegUser size={23} className="icon" />
             </Link>
           </li>
           {datosUsuario && (
@@ -67,6 +68,7 @@ export const Header = () => {
                 alt="icono cart"
                 onClick={toggleCart}
                 ref={cartButtonRef}
+                className="icon"
               />
             </li>
           )}
