@@ -1093,3 +1093,12 @@ button {
 .star-rating .off .star {
   color: #ccc;
 }
+
+.icon{
+  transition: filter 0.3s ease;
+}
+
+.icon:hover{
+  color: #38cb89;
+  filter: invert(48%) sepia(54%) saturate(515%) hue-rotate(84deg) brightness(95%) contrast(91%);
+}

@@ -3,7 +3,7 @@
   width: 300px; /* Adjust width accordingly */
   height: 80vh; /* Set height to half of the screen */
   top: 65px !important;
-  right: 0 !important;
+  right: 0px !important;
   background: white;
   box-shadow: 0 3px 15px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
