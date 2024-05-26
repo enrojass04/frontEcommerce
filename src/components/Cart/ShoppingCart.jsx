@@ -51,7 +51,7 @@ const ShoppingCart = ({ position, onClose }) => {
             <div className="cart-item-details">
               <span>{item.name}</span>
               <span>
-                {item.price} x {item.quantity}
+                ${item.price} x {item.quantity}
               </span>
               <div className="cart-item-actions">
                 <button onClick={() => decrementQuantity(item.id)} className="boton-card">-</button>
@@ -62,7 +62,7 @@ const ShoppingCart = ({ position, onClose }) => {
           </div>
         ))}
       </div>
-      <div className="shopping-cart-footer">
+      <div className="shopping-cart-footer precio">
         <strong>Total: </strong> ${totalPrice.toFixed(2)}
       </div>
       <div className="shopping-cart-footer">

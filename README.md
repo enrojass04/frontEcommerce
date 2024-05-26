@@ -21,33 +21,29 @@ La aplicación e-commerce desarrollada en este proyecto ofrece a los usuarios un
 - BD MySQL
 - ORM para modelado Sequelize
 
-## Instalación
+## Instalación frontend
 
 Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
 
 1. Clona este repositorio en tu máquina local:
 
    ```bash
-   git clone https://github.com/enrojass04/E-Commerce-Talento-Tech.git
+   git clone https://github.com/enrojass04/frontEcommerce.git
 
 2. Navega al directorio del proyecto:
     ```bash
-    cd E-Commerce-Talento-Tech
+    cd frontEcommerce
+
     ```
 
-3. Instalación del backend:
+3. Instalación del frontend:
     ```bash
     cd frontend
     npm install
     ```
     Crea un archivo .env en la raíz y proporciona los datos de tu base de datos como se muestra en el ejemplo:
     ```
-    DB_NAME='database'
-    DB_USER='user'
-    DB_PASSWORD='password'
-    DB_HOST='localhost'
-    JWT_SECRET=mysecret
-
+    VITE_API_URL=http://127.0.0.1:3000/api/
     ```
     Ejecuta el frontend con el comando:
     ```bash
@@ -55,21 +51,10 @@ Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
     npm install
     ```
 
-4. Instalación del backend:
+4. Ejecución del backend:
+    Ejecuta el comando en consola
     ```bash
-    cd ../backend
-    npm install
+   npm run dev
     ```
-    Crea un archivo .env en la raíz de esta carpeta y establece la URL principal como se muestra en el ejemplo:
-    ```
-    VITE_API_URL=http://127.0.0.1:3000/api/
-    ```
-    Luego, ejecuta los siguientes comandos para crear la base de datos y realizar migraciones:
-    ```bash
-    npx sequelize db:create
-    npx sequelize db:migrate
-    ```
-    Crea en tu base de datos un role administrador y un role user y además un usuario administrador.
-    ```bash
-    cd frontend
-    ```
+
+5. [Vídeo](http://ejemplo.com)
