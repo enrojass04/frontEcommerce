@@ -47,12 +47,7 @@ export const Header = () => {
         <ul>
           {datosUsuario && (
             <li>
-
-                <IoLogInOutline
-                  size={30}
-                  variant="danger"
-                  onClick={logout}
-                />
+              <IoLogInOutline size={30} variant="danger" onClick={logout} />
             </li>
           )}
           <li>

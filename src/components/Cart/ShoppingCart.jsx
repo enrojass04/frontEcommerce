@@ -34,11 +34,11 @@ const ShoppingCart = ({ position, onClose }) => {
     <div
       ref={cartRef}
       className="shopping-cart"
-      style={{
-        height: "80vh",
-        width: "300px",
-        position: "absolute",
-      }}
+      // style={{
+      //   height: "80vh",
+      //   width: "300px",
+      //   position: "absolute",
+      // }}
     >
       <div className="shopping-cart-header">
         <h4 className="fw-bold">Shopping Cart</h4>
@@ -54,9 +54,24 @@ const ShoppingCart = ({ position, onClose }) => {
                 ${item.price} x {item.quantity}
               </span>
               <div className="cart-item-actions">
-                <button onClick={() => decrementQuantity(item.id)} className="boton-card">-</button>
-                <button onClick={() => incrementQuantity(item.id)} className="boton-card">+</button>
-                <button onClick={() => removeFromCart(item.id)} className="boton-card">X</button>
+                <button
+                  onClick={() => decrementQuantity(item.id)}
+                  className="boton-card"
+                >
+                  -
+                </button>
+                <button
+                  onClick={() => incrementQuantity(item.id)}
+                  className="boton-card"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => removeFromCart(item.id)}
+                  className="boton-card"
+                >
+                  X
+                </button>
               </div>
             </div>
           </div>
@@ -78,5 +93,3 @@ const ShoppingCart = ({ position, onClose }) => {
 };
 
 export default ShoppingCart;
-
-
