@@ -50,7 +50,7 @@ export const HomeUser = () => {
             </div>
             <div className="cat5 row justify-content-center">
               <img src={imagenes.catReloges} alt={imagenes.catReloges} />
-              <span>Reloges</span>
+              <span>Relojes</span>
             </div>
             <div className="cat6 row justify-content-center">
               <img src={imagenes.catCamaras} alt={imagenes.catCamaras} />
